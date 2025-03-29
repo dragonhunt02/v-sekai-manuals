@@ -56,7 +56,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-
+<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" type="text/css">
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
@@ -224,9 +225,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="https://cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
 <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.min.css">
  -->
-<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" type="text/css">
-<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" type="text/javascript"></script>
-  
+
 <!-- Initialize DataTables for the generated table
 <script>
   var jQuerySecond = jQuery.noConflict(true);
@@ -242,10 +241,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </script>
    -->
   <script>
-  var dataTable1 = new DataTable("#myTable", {
-	searchable: false,
-	fixedHeight: true
+document.addEventListener("DOMContentLoaded", function() {
+    var dataTable1 = new DataTable("#myTable", {
+        searchable: false,
+        fixedHeight: true
+    });
 });
+
     console.log(dataTable1);
 </script>
 
