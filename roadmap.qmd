@@ -5,6 +5,7 @@ format: html
 ---
 
 ```{python}
+#| results: asis
 #| label: roadmap
 #| fig-cap: "Sortable DataTable"
 
