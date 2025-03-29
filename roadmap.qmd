@@ -1,5 +1,5 @@
 ---
-title: "Sortable DataTable Dashboard from TSV"
+title: "Sortable DataTable Dashboard from TSV "
 format: html
 include-after-body: observable-sort.js
 # css: styles.css  # Optional custom CSS
