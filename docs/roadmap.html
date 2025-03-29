@@ -219,12 +219,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
-<!-- Include jQuery and DataTables from a CDN -->
+<!-- Include jQuery and DataTables from a CDN
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
 <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.min.css">
-
-<!-- Initialize DataTables for the generated table -->
+ -->
+<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" type="text/css">
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" type="text/javascript"></script>
+  
+<!-- Initialize DataTables for the generated table
 <script>
   var jQuerySecond = jQuery.noConflict(true);
   
@@ -235,6 +238,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       // Sorting is enabled by default.
     });
   });
+  
+</script>
+   -->
+  <script>
+  var dataTable1 = new DataTable("#myTable", {
+	searchable: false,
+	fixedHeight: true
+});
+    console.log(dataTable1);
 </script>
 
 
