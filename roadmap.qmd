@@ -1,7 +1,7 @@
 ---
 title: "Sortable DataTable Dashboard from TSV "
 format: html
-include-after-body: observable-sort.js
+include-after-body: datatables.js
 # css: styles.css  # Optional custom CSS
 ---
 
