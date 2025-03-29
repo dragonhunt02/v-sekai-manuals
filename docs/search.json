@@ -31210,6 +31210,6 @@
     "href": "roadmap.html",
     "title": "Sortable DataTable Dashboard from TSV",
     "section": "",
-    "text": "import pandas as pd\n\n# Read the TSV file\ndf = pd.read_csv(\"data.tsv\", sep=\"\\t\")\n\n# Generate an HTML table with an id of \"myTable\"\nhtml_table = df.to_html(index=False, table_id=\"myTable\", border=0)\nprint(html_table)\n\n&lt;table class=\"dataframe\" id=\"myTable\"&gt;\n  &lt;thead&gt;\n    &lt;tr style=\"text-align: right;\"&gt;\n      &lt;th&gt;Name&lt;/th&gt;\n      &lt;th&gt;Age&lt;/th&gt;\n      &lt;th&gt;Role&lt;/th&gt;\n    &lt;/tr&gt;\n  &lt;/thead&gt;\n  &lt;tbody&gt;\n    &lt;tr&gt;\n      &lt;td&gt;Alice&lt;/td&gt;\n      &lt;td&gt;30&lt;/td&gt;\n      &lt;td&gt;Engineer&lt;/td&gt;\n    &lt;/tr&gt;\n    &lt;tr&gt;\n      &lt;td&gt;Bob&lt;/td&gt;\n      &lt;td&gt;25&lt;/td&gt;\n      &lt;td&gt;Designer&lt;/td&gt;\n    &lt;/tr&gt;\n    &lt;tr&gt;\n      &lt;td&gt;Carol&lt;/td&gt;\n      &lt;td&gt;28&lt;/td&gt;\n      &lt;td&gt;Manager&lt;/td&gt;\n    &lt;/tr&gt;\n  &lt;/tbody&gt;\n&lt;/table&gt;"
+    "text": "from IPython.display import HTML, display\nimport pandas as pd\n\n# Read the TSV file (ensure 'data.tsv' is in the same directory)\ndf = pd.read_csv(\"data.tsv\", sep=\"\\t\")\n\n# Generate an HTML table with an id of \"myTable\"\nhtml_table = df.to_html(index=False, table_id=\"myTable\", border=0)\n\n# Use display(HTML(...)) to output as a rich HTML object\ndisplay(HTML(html_table))\n\n\n\n\nName\nAge\nRole\n\n\n\n\nAlice\n30\nEngineer\n\n\nBob\n25\nDesigner\n\n\nCarol\n28\nManager"
   }
 ]
