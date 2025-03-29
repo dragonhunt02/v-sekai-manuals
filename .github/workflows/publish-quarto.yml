@@ -11,11 +11,12 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: "14"
-      - name: Set up Quarto
-        uses: quarto-dev/quarto-actions/setup@v2
-      - name: Set up Jupyter
+      - name: Set up Jupyter and Pandas
         run: |
           pip install jupyter
+          pip install pandas
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
       - name: Remove github issues
         run: |
           rm -rf thirdparty
