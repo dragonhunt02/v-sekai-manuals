@@ -2,8 +2,8 @@ project:
   type: website
   output-dir: _site
 
-resources:
-  - decisions/attachments
+#resources:
+#  - decisions/attachments
 
 website:
   site-url: https://v-sekai.github.io/manuals
@@ -20,8 +20,8 @@ website:
     left:
       - text: "Roadmap"
         file: roadmap.qmd
-      - text: "Changes"
-        file: changelog.qmd
+      #- text: "Changes"
+      #  file: changelog.qmd
       #- text: "Decisions"
       #  file: decisions.qmd
   page-footer:
