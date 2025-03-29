@@ -220,13 +220,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <!-- Include jQuery and DataTables from a CDN -->
-<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.min.css">
 
 <!-- Initialize DataTables for the generated table -->
 <script>
-  $(document).ready(function() {
-    $('#myTable').DataTable({
+  var jQuerySecond = jQuery.noConflict(true);
+  
+  jQuerySecond(document).ready(function() {
+    jQuerySecond('#myTable').DataTable({
       paging: true,    // Enable pagination
       searching: true  // Enable the search/filter feature
       // Sorting is enabled by default.
