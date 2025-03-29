@@ -1,7 +1,7 @@
 ---
 title: "Sortable DataTable Dashboard from TSV "
 format: html
-include-after-body: datatables.js
+# include-after-body: datatables.js
 # css: styles.css  # Optional custom CSS
 ---
 
@@ -11,22 +11,26 @@ include-after-body: datatables.js
 from IPython.display import HTML, display
 import pandas as pd
 
+from itables import init_notebook_mode, show
+init_notebook_mode(all_interactive=False)
+
 # Read the TSV file (ensure 'data.tsv' is in the same directory)
 df = pd.read_csv("data.tsv", sep="\t")
 
 # Generate an HTML table with an id of "myTable"
-html_table = df.to_html(index=False, table_id="myTable", border=0)
+#html_table = df.to_html(index=False, table_id="myTable", border=0)
 
 # Use display(HTML(...)) to output as a rich HTML object
-display(HTML(html_table))
+#display(HTML(html_table))
+show(df)
 ```
 
 ```{=html}
-<!-- Include jQuery and DataTables from a CDN -->
+<!-- Include jQuery and DataTables from a CDN 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
 <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.min.css"/>
-
+-->
 <!-- Initialize DataTables for the generated table -->
 <script>
   $(document).ready(function() {
