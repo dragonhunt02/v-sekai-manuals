@@ -1,0 +1,37 @@
+---
+title: "Sortable DataTable Dashboard from TSV"
+format: html
+css: styles.css  # Optional custom CSS
+---
+
+```{python}
+#| label: roadmap
+#| fig-cap: "Sortable DataTable"
+
+import pandas as pd
+
+# Read the TSV file
+df = pd.read_csv("data.tsv", sep="\t")
+
+# Generate an HTML table with an id of "myTable"
+html_table = df.to_html(index=False, table_id="myTable", border=0)
+print(html_table)
+```
+
+```{=html}
+<!-- Include jQuery and DataTables from a CDN -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css"/>
+
+<!-- Initialize DataTables for the generated table -->
+<script>
+  $(document).ready(function() {
+    $('#myTable').DataTable({
+      paging: true,    // Enable pagination
+      searching: true  // Enable the search/filter feature
+      // Sorting is enabled by default.
+    });
+  });
+</script>
+```
