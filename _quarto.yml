@@ -22,8 +22,8 @@ website:
         file: roadmap.qmd
       - text: "Changes"
         file: changelog.qmd
-      - text: "Decisions"
-        file: decisions.qmd
+      #- text: "Decisions"
+      #  file: decisions.qmd
   page-footer:
     right:
       - icon: github
