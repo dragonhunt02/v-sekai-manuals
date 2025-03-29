@@ -56,8 +56,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" type="text/css">
-<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" type="text/javascript"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
@@ -220,40 +219,62 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
-<!-- Include jQuery and DataTables from a CDN
+<!-- Include jQuery and DataTables from a CDN -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
 <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.min.css">
- -->
 
-<!-- Initialize DataTables for the generated table
+<!-- Initialize DataTables for the generated table -->
 <script>
-  var jQuerySecond = jQuery.noConflict(true);
-  
-  jQuerySecond(document).ready(function() {
-    jQuerySecond('#myTable').DataTable({
+  $(document).ready(function() {
+    $('#myTable').DataTable({
       paging: true,    // Enable pagination
       searching: true  // Enable the search/filter feature
       // Sorting is enabled by default.
     });
   });
-  
-</script>
-   -->
-  <script>
-document.addEventListener("DOMContentLoaded", function() {
-    var dataTable1 = new DataTable("#myTable", {
-        searchable: false,
-        fixedHeight: true
-    });
-});
-
-    console.log(dataTable1);
 </script>
 
 
 
 </main> <!-- /main -->
+  import { Runtime } from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
+
+  // Wait for the DOM to be ready.
+  document.addEventListener('DOMContentLoaded', () =&gt; {
+    const runtime = new Runtime();
+    runtime.module({
+      // Define an Observable cell named “sortableTable.”
+      async *sortableTable() {
+        // Grab the table by its id.
+        const table = document.getElementById("myTable");
+        if (!table) return; // If the table isn’t found, exit.
+
+        const headers = table.querySelectorAll("th");
+        const tbody = table.querySelector("tbody");
+
+        // Attach click events for each header cell.
+        headers.forEach((header, colIndex) =&gt; {
+          header.style.cursor = "pointer";  // Make it obvious the header is interactive.
+          header.addEventListener("click", () =&gt; {
+            // Get all rows as an array.
+            const rows = Array.from(tbody.querySelectorAll("tr"));
+
+            // Sort rows based on the text content of the clicked column.
+            rows.sort((a, b) =&gt; {
+              const aText = a.cells[colIndex].textContent.trim();
+              const bText = b.cells[colIndex].textContent.trim();
+              return aText.localeCompare(bText, undefined, { numeric: true });
+            });
+
+            // Reattach the rows in sorted order.
+            rows.forEach(row =&gt; tbody.appendChild(row));
+          });
+        });
+        yield table;  // Optional: yield the table element.
+      }
+    });
+  });
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
