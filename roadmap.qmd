@@ -7,16 +7,17 @@ format: html
 ```{python}
 #| results: asis
 #| label: roadmap
-#| fig-cap: "Sortable DataTable"
-
+from IPython.display import HTML, display
 import pandas as pd
 
-# Read the TSV file
+# Read the TSV file (ensure 'data.tsv' is in the same directory)
 df = pd.read_csv("data.tsv", sep="\t")
 
 # Generate an HTML table with an id of "myTable"
 html_table = df.to_html(index=False, table_id="myTable", border=0)
-print(html_table)
+
+# Use display(HTML(...)) to output as a rich HTML object
+display(HTML(html_table))
 ```
 
 ```{=html}
