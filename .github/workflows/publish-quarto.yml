@@ -1,32 +1,31 @@
-name: Publish Quarto
+name: "edit"
+
+# yamllint disable-line rule:truthy 
 on:
   push:
-    branches:
-      - main
+    branches: [xr]
+permissions:
+  contents: write
 jobs:
-  quarto-linux:
-    runs-on: ubuntu-latest
+  edit:
+    name: edit
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v4
         with:
-          node-version: "14"
-      - name: Set up Jupyter and Pandas
+          ref: main
+          fetch-depth: 0
+
+      - name: inspect builder
         run: |
-          pip install jupyter
-          pip install pandas
-          pip install itables
-      - name: Set up Quarto
-        uses: quarto-dev/quarto-actions/setup@v2
-      - name: Remove github issues
-        run: |
-          rm -rf thirdparty
-      - run: |
-          quarto render
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@3.7.1
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: _site
-          TARGET_FOLDER: docs
+          git config --global user.email "jackhunt43@libero.it"
+          git config --global user.name "dragonhunt02"
+
+          #alias rmm='git restore -s main'
+          #rm .github/workflows/edit.yaml
+          #chmod +x plugins/proxy/command-functions 
+          #git reset --soft HEAD~110
+          curl -o roadmap.tsv L https://docs.google.com/spreadsheets/d/1rNBWaDgqbSmt7ZbWAluyytma9rAH3yhomIihibaceVM/export?gid=993631388&format=tsv
+          git add -A
+          git commit -a -m "Add tsv"
+          git push -f
