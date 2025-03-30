@@ -25,7 +25,7 @@ jobs:
           #rm .github/workflows/edit.yaml
           #chmod +x plugins/proxy/command-functions 
           #git reset --soft HEAD~110
-          curl -o roadmap.tsv L https://docs.google.com/spreadsheets/d/1rNBWaDgqbSmt7ZbWAluyytma9rAH3yhomIihibaceVM/export?gid=993631388&format=tsv
+          curl -o roadmap.tsv -L https://docs.google.com/spreadsheets/d/1rNBWaDgqbSmt7ZbWAluyytma9rAH3yhomIihibaceVM/export?gid=993631388&format=tsv
           git add -A
           git commit -a -m "Add tsv"
-          git push -f
+          git push
