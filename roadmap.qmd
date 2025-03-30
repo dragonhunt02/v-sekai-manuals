@@ -3,14 +3,12 @@ title: "Roadmap"
 format: 
   html:
     page-layout: full
-#format: html
-# css: styles.css  # Optional custom CSS
 ---
 
 ```{python}
-#| results: asis
 #| label: roadmap
 #| echo: false
+
 from IPython.display import HTML, display
 import pandas as pd
 
@@ -18,7 +16,6 @@ from itables import init_notebook_mode, show
 init_notebook_mode(all_interactive=False)
 
 df = pd.read_csv("roadmap/roadmap.tsv", sep="\t")
-#, scrollX=False, scrollY=False)
 
 show(df, paging=False)
 ```
