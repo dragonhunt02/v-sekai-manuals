@@ -22,7 +22,7 @@ jobs:
           git config --global user.name "dragonhunt02"
 
           #rm data.tsv datatables.js
-          git reset --soft HEAD~4
+          git reset --soft HEAD~2
           
           git add -A
           git commit -a -m "Add sortable roadmap page"
