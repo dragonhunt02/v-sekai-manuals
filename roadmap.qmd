@@ -9,13 +9,13 @@ format:
 #| label: roadmap
 #| echo: false
 
-from IPython.display import HTML, display
 import pandas as pd
-
+from IPython.display import HTML, display
 from itables import init_notebook_mode, show
+
 init_notebook_mode(all_interactive=False)
 
 df = pd.read_csv("roadmap/roadmap.tsv", sep="\t")
 
-show(df, paging=False)
+show(df, paging=False, column_filters="header")
 ```
