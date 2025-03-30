@@ -15,9 +15,12 @@ jobs:
           curl -o roadmap.tsv -fL "$ROADMAP_URL"
           sed -i '1d' roadmap.tsv
           mv -f roadmap.tsv roadmap/roadmap.tsv
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           if ! git diff --quiet; then
               git commit -a -m "Update Roadmap - $(date '+%Y%m%dT%H%M%S')"
+              git push
           else
               echo "No changes detected. Nothing to commit."
           fi
-
