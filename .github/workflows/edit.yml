@@ -21,11 +21,9 @@ jobs:
           git config --global user.email "jackhunt43@libero.it"
           git config --global user.name "dragonhunt02"
 
-          #alias rmm='git restore -s main'
-          #rm .github/workflows/edit.yaml
-          #chmod +x plugins/proxy/command-functions 
+          rm data.tsv datatables.js
           #git reset --soft HEAD~110
-          curl -v -o roadmap.tsv -L 'https://docs.google.com/spreadsheets/d/1rNBWaDgqbSmt7ZbWAluyytma9rAH3yhomIihibaceVM/export?gid=993631388&exportFormat=tsv'
+          
           git add -A
-          git commit -a -m "Add tsv"
+          git commit -a -m "Remove data.tsv"
           git push
