@@ -15,6 +15,9 @@ jobs:
       - uses: actions/checkout@v3
       - name: Update Roadmap
         run: |
+          pip install pandas starvote
+          python3 starvote.py
+          exit 1
           curl -o roadmap.tsv -fL "$ROADMAP_URL"
           sed -i '1d' roadmap.tsv
           mv -f roadmap.tsv roadmap/roadmap.tsv
