@@ -1,11 +1,10 @@
 name: 🔄 Update Roadmap
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
   schedule:
     - cron: '00 12 */5 * *'
   # Runs every 5 days at 12:00
+  # Manual trigger is in Actions Tab > Update Roadmap > Run workflow
 
 jobs:
   update-roadmap:
