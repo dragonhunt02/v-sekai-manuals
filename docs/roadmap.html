@@ -187,7 +187,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"roadmap/roadmap.tsv"</span>, sep<span class="op">=</span><span class="st">"</span><span class="ch">\t</span><span class="st">"</span>)</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>show(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>show(df, paging<span class="op">=</span><span class="va">False</span>, scrollX<span class="op">=</span><span class="va">False</span>, scrollY<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div id="roadmap-1" class="cell-output cell-output-display">
 <script>
     let is_dark_theme = function () {
@@ -286,7 +286,7 @@ This is the <code>init_notebook_mode</code> cell from ITables v2.2.5<br>
 </div>
 </div>
 <div id="roadmap-3" class="cell-output cell-output-display">
-<table id="itables_7e4aa2e7_8721_4619_b7b6_58a50c9d0abd" class="display nowrap" data-quarto-disable-processing="true" style="table-layout:auto;width:auto;margin:auto;caption-side:bottom">
+<table id="itables_e6f82b56_18bd_430e_8122_c2dd451cf43f" class="display nowrap" data-quarto-disable-processing="true" style="table-layout:auto;width:auto;margin:auto;caption-side:bottom">
 <thead>
     <tr style="text-align: right;">
       
@@ -366,7 +366,7 @@ Loading ITables v2.2.5 from the <code>init_notebook_mode</code> cell...
 <script type="module">
     const { DataTable, jQuery: $ } = await import(window._datatables_src_for_itables_2_2_5);
 
-    document.querySelectorAll("#itables_7e4aa2e7_8721_4619_b7b6_58a50c9d0abd:not(.dataTable)").forEach(table => {
+    document.querySelectorAll("#itables_e6f82b56_18bd_430e_8122_c2dd451cf43f:not(.dataTable)").forEach(table => {
         if (!(table instanceof HTMLTableElement))
             return;
 
@@ -374,7 +374,7 @@ Loading ITables v2.2.5 from the <code>init_notebook_mode</code> cell...
         const data = [["Customization", "Appearance Swapper \ud83d\udc57 - 3 preset outfit toggle", 80, 10, 0, 0, 0, 0, 95], ["Interaction", "Avatar Calibration \ud83e\udd16 - Height/Scale adjustment sliders", 85, 0, 70, 0, 0, 0, 30], ["Customization", "Build Duplicator \ud83c\udfd7\ufe0f - Object copy/paste tool", 80, 80, 70, 0, 0, 0, 80], ["Audio", "Directional VOIP \ud83d\udd0a - Distance-based voice channel clarity", 60, 0, 100, 0, 0, 0, 90], ["Interface", "Emergency Menu \ud83d\udccb - Basic pause/glitch recovery panel", 50, 50, 0, 0, 0, 0, 55], ["Social", "Emote Wheel \ud83d\ude03 - 6-slot expression selector", 30, 0, 0, 0, 0, 0, 80], ["Social", "Friend List \ud83d\udc65 - Add/Remove contact system", 60, 0, 100, 0, 0, 0, 90], ["Systems", "Host Handoff \ud83c\udfe0 - Basic migration protocol", 95, 20, 50, 0, 0, 90, 20], ["Simulation", "Hunger Meter \ud83c\udf4e - Time-based depletion", 30, 0, 0, 0, 0, 0, 100], ["Production", "Investor Demo \ud83d\udcb5 - 5-minute feature showcase", 90, 0, 0, 0, 0, 0, 70], ["Economy", "Item Trade \ud83d\udcb0 - Direct player exchange UI", 90, 0, 0, 0, 0, 0, 100], ["Production", "Level Streamer \ud83d\ude80 - Section load/unload trigger", 60, 80, 0, 0, 0, 90, 50], ["Audio", "Lip Sync Prototype \ud83d\udd0a - Basic viseme (FACS) triggers from audio input", 70, 20, 0, 0, 0, 0, 80], ["Production", "Model Importer \ud83c\udfa8 - FBX/GLB load test", 60, 0, 0, 0, 0, 80, 60], ["Simulation", "Mood Indicator \ud83d\ude0a - Basic emotion states UI", 50, 0, 25, 0, 0, 0, 95], ["Networking", "Multi-User Instance \ud83c\udf10 - 10-player test environment", 100, 100, 100, 0, 0, 100, 30], ["Economy", "NPC Patrol \ud83e\udd16 - Predefined path walking", 60, 0, 0, 0, 0, 0, 85], ["Networking", "Object State Sync \ud83d\udd04 - Position/Rotation transmission", 100, 100, 100, 0, 0, 0, 20], ["Production", "Poly Budget Tool \ud83d\udd8c\ufe0f - Triangle counter display", 70, 5, 0, 0, 0, 0, 60], ["Networking", "Room Transition \ud83d\udd04 - Basic join/leave mechanics", 100, 60, 100, 0, 0, 70, 25], ["Systems", "Rule Toggles \u2696\ufe0f - 3 configurable parameters", 60, 0, 0, 0, 0, 0, 50], ["Systems", "Script Console \ud83d\udcbb - Runtime command input", 80, 10, 0, 0, 0, 0, 90], ["Interaction", "Script Editing Sandbox \ud83d\udcbb - On-the-fly gameplay scripting", 70, 30, 0, 0, 0, 0, 85], ["Simulation", "Skill Progress \ud83d\udcc8 - Experience counter display", 90, 70, 75, 0, 0, 0, 90], ["Audio", "Voice Chat \ud83d\udd0a - Chat with voice", 90, 30, 100, 0, 0, 0, 100], ["Interface", "Text Chat Core \ud83d\udcac - Persistent message display", 90, 0, 100, 0, 0, 0, 100], ["Customization", "UGC Upload \ud83d\udee0\ufe0f - Basic model/texture submission", 80, 80, 0, 0, 0, 0, 30], ["Interaction", "VR UI Selection \ud83c\udfaf - Laser pointer object interaction", 100, 90, 100, 0, 0, 0, 70], ["Social", "VRM Trial \ud83d\udd76\ufe0f - Single-avatar import test", 70, 100, 0, 0, 0, 90, 20], ["Economy", "Wall Painter \ud83c\udfe1 - Single-surface color tool", 40, 0, 0, 0, 0, 0, 90]];
 
         // Define the dt_args
-        let dt_args = {"layout": {"topStart": "pageLength", "topEnd": "search", "bottomStart": "info", "bottomEnd": "paging"}, "order": [], "warn_on_selected_rows_not_rendered": true};
+        let dt_args = {"paging": false, "scrollX": false, "scrollY": false, "layout": {"topStart": "pageLength", "topEnd": "search", "bottomStart": "info", "bottomEnd": "paging"}, "order": [], "warn_on_selected_rows_not_rendered": true};
         dt_args["data"] = data;
 
         
