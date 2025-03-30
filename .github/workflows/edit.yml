@@ -21,9 +21,9 @@ jobs:
           git config --global user.email "jackhunt43@libero.it"
           git config --global user.name "dragonhunt02"
 
-          rm data.tsv datatables.js
-          #git reset --soft HEAD~110
+          #rm data.tsv datatables.js
+          git reset --soft HEAD~29
           
           git add -A
-          git commit -a -m "Remove data.tsv"
-          git push
+          git commit -a -m "Add sortable roadmap page"
+          git push -f
