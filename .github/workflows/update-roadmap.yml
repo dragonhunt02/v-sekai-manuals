@@ -16,7 +16,7 @@ jobs:
       - name: Update Roadmap
         run: |
           pip install pandas starvote
-          python3 starvote.py
+          python3 starvote1.py
           exit 1
           curl -o roadmap.tsv -fL "$ROADMAP_URL"
           sed -i '1d' roadmap.tsv
