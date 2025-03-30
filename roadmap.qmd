@@ -15,5 +15,5 @@ init_notebook_mode(all_interactive=False)
 
 df = pd.read_csv("roadmap/roadmap.tsv", sep="\t")
 
-show(df)
+show(df, paging=False, scrollX=False, scrollY=False)
 ```
