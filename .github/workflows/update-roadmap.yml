@@ -1,0 +1,23 @@
+name: Update Roadmap
+on:
+  push:
+    branches:
+      - main
+jobs:
+  update-roadmap:
+    env:
+      ROADMAP_URL: 'https://docs.google.com/spreadsheets/d/1rNBWaDgqbSmt7ZbWAluyytma9rAH3yhomIihibaceVM/export?gid=993631388&exportFormat=tsv'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Update Roadmap
+        run: |
+          curl -o roadmap.tsv -fL "$ROADMAP_URL"
+          sed -i '1d' roadmap.tsv
+          mv -f roadmap.tsv roadmap/roadmap.tsv
+          if ! git diff --quiet; then
+              git commit -a -m "Update Roadmap - $(date '+%Y%m%dT%H%M%S')"
+          else
+              echo "No changes detected. Nothing to commit."
+          fi
+
