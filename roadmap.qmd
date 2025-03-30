@@ -10,12 +10,11 @@ format:
 #| echo: false
 
 import pandas as pd
-from IPython.display import HTML, display
 from itables import init_notebook_mode, show
 
 init_notebook_mode(all_interactive=False)
 
 df = pd.read_csv("roadmap/roadmap.tsv", sep="\t")
 
-show(df, paging=False, column_filters="header")
+show(df, paging=False)
 ```
