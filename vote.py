@@ -34,6 +34,9 @@ aggregated_values = defaultdict(list)
 
 for ballot in ballot_list:
     for key, value in ballot.items():
+        if not value.is_integer():
+            raise Exception(f"Ballot vote {key} is not an integer")
+        value = max(0, min(value, 100)) #clamp
         aggregated_values[key].append(value)
 
 # Step 2: Compute the average for each key and store in a dictionary
