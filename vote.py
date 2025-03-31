@@ -18,7 +18,6 @@ def get_votes(votes_dir):
             df.drop(columns='Category', inplace=True)
         ballot = df.set_index('Task')['Vote'].to_dict()
         ballot_dict[voter] = ballot
-    print(ballot_dict)
     return ballot_dict
 
 def get_votes_list(votes_dir):
@@ -33,7 +32,6 @@ def starvote_election(ballot_list, seats=1):
         tiebreaker=hashed_ballots_tiebreaker,
         maximum_score=100,
     )
-    print(json.dumps(results, indent=4))
     return results
 
 def generate_avg_table(ballot_list, tasks_path):
@@ -56,9 +54,6 @@ def generate_avg_table(ballot_list, tasks_path):
     averages_df = pd.DataFrame(list(averages.items()), columns=["Task", "Priority"])
     averages_df.set_index("Task", drop=False, inplace=True)
 
-    print(averages_df.to_string(index=False, header=False))
-    print("Averages for each key:", averages)
-
     tasks_df = pd.read_csv(tasks_path)
     tasks_df["Priority"] = 0
     tasks_df.set_index("Task", drop=False, inplace=True)
@@ -66,9 +61,6 @@ def generate_avg_table(ballot_list, tasks_path):
     tasks_df.update(averages_df)
     tasks_df.sort_values(by='Priority', ascending=False, inplace=True)
     tasks_df.reset_index(drop=True, inplace=True)
-    
-    print(averages_df)
-    print(tasks_df)
     return tasks_df
 
 def run_election(votes_dir, seats, tasks_path):
