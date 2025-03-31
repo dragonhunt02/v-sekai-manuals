@@ -19,13 +19,13 @@ init_notebook_mode(all_interactive=False)
 results = vote.run_election('./roadmap/votes', 5, "./roadmap/tasks.csv")
 
 df = results["avg_table"]
-df.loc[df["Task"].isin(results["winners"]), "Task"] += " ✴️(Updated)"
+df.loc[df["Task"].isin(results["winners"]), "Task"] += " - 🚨 (High Priority)"
 
 print("""
 
 ## Feature List
 
-Features in red are voted as top priority with StarVote. Priority column is an average of votes for every feature.
+Features with 🚨 symbol were voted as top priority with StarVote. Priority column is an average of votes for every feature.
 
 """)
 
