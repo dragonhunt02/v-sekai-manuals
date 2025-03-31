@@ -26,4 +26,4 @@ jobs:
           
           git add -A
           git commit -a -m "Add feature voting system and sortable roadmap page"
-          git push
+          git push -f
