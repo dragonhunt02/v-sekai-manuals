@@ -19,6 +19,7 @@ init_notebook_mode(all_interactive=False)
 
 results = vote.run_election('./roadmap/votes', 2, "./roadmap/tasks.csv")
 
+
 df = results["avg_table"]
 
 show(df, paging=False)
