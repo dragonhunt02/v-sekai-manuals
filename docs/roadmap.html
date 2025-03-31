@@ -115,17 +115,11 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#feature-list" id="toc-feature-list" class="nav-link active" data-scroll-target="#feature-list">Feature List</a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/roadmap.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -134,7 +128,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<div class="quarto-title-meta column-page-left">
+<div class="quarto-title-meta column-page">
 
     
   
@@ -146,9 +140,6 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="feature-list" class="level2">
-<h2 class="anchored" data-anchor-id="feature-list">Feature List</h2>
-<p>Features in red are voted as top priority with StarVote. Priority column is an average of votes for every feature.</p>
 <div id="roadmap" class="cell" data-execution_count="1">
 <script>
     let is_dark_theme = function () {
@@ -243,7 +234,10 @@ This is the <code>init_notebook_mode</code> cell from ITables v2.2.5<br>
 (you should not see this message - is your notebook <it>trusted</it>?)
 </noscript>
 </div>
-<table id="itables_1ec21957_1499_4b79_9be6_deaab2e85ef2" class="display nowrap" data-quarto-disable-processing="true" style="table-layout:auto;width:auto;margin:auto;caption-side:bottom">
+<section id="feature-list" class="level2">
+<h2 class="anchored" data-anchor-id="feature-list">Feature List</h2>
+<p>Features in red are voted as top priority with StarVote. Priority column is an average of votes for every feature.</p>
+<table id="itables_20bffdbb_44e6_4c78_b43f_ce27dcb69b0c" class="display nowrap" data-quarto-disable-processing="true" style="table-layout:auto;width:auto;margin:auto;caption-side:bottom">
 <thead>
     <tr style="text-align: right;">
       
@@ -317,7 +311,7 @@ Loading ITables v2.2.5 from the <code>init_notebook_mode</code> cell...
 <script type="module">
     const { DataTable, jQuery: $ } = await import(window._datatables_src_for_itables_2_2_5);
 
-    document.querySelectorAll("#itables_1ec21957_1499_4b79_9be6_deaab2e85ef2:not(.dataTable)").forEach(table => {
+    document.querySelectorAll("#itables_20bffdbb_44e6_4c78_b43f_ce27dcb69b0c:not(.dataTable)").forEach(table => {
         if (!(table instanceof HTMLTableElement))
             return;
 
@@ -332,16 +326,18 @@ Loading ITables v2.2.5 from the <code>init_notebook_mode</code> cell...
         new DataTable(table, dt_args);
     });
 </script>
+</section>
 <section id="raw-votes" class="level2">
 <h2 class="anchored" data-anchor-id="raw-votes">Raw Votes</h2>
-<p>Features in red are voted as top priority with StarVote. Priority column is an average of votes for every feature.</p>
-<table id="itables_53791556_711c_42fe_b82c_fdf10ea575b8" class="display nowrap" data-quarto-disable-processing="true" style="table-layout:auto;width:auto;margin:auto;caption-side:bottom">
+<p>Raw votes count</p>
+<table id="itables_e5e6d0e9_ee97_4f4f_8bdb_8e3c952c6d0b" class="display nowrap" data-quarto-disable-processing="true" style="table-layout:auto;width:auto;margin:auto;caption-side:bottom">
 <thead>
     <tr style="text-align: right;">
-      
-      <th>Category</th>
-      <th>Task</th>
-      <th>Priority</th>
+      <th></th>
+      <th>Lito</th>
+      <th>Astral</th>
+      <th>Lyuma</th>
+      <th>iFire</th>
     </tr>
   </thead><tbody><tr>
 <td style="vertical-align:middle; text-align:left">
@@ -409,12 +405,12 @@ Loading ITables v2.2.5 from the <code>init_notebook_mode</code> cell...
 <script type="module">
     const { DataTable, jQuery: $ } = await import(window._datatables_src_for_itables_2_2_5);
 
-    document.querySelectorAll("#itables_53791556_711c_42fe_b82c_fdf10ea575b8:not(.dataTable)").forEach(table => {
+    document.querySelectorAll("#itables_e5e6d0e9_ee97_4f4f_8bdb_8e3c952c6d0b:not(.dataTable)").forEach(table => {
         if (!(table instanceof HTMLTableElement))
             return;
 
         // Define the table data
-        const data = [["Networking", "Multi-User Instance \ud83c\udf10 - 10-player test environment", 75], ["Social", "VRM Trial \ud83d\udd76\ufe0f - Single-avatar import test", 65], ["Systems", "Host Handoff \ud83c\udfe0 - Basic migration protocol", 64], ["Simulation", "Skill Progress \ud83d\udcc8 - Experience counter display", 59], ["Networking", "Room Transition \ud83d\udd04 - Basic join/leave mechanics", 58], ["Production", "Level Streamer \ud83d\ude80 - Section load/unload trigger", 58], ["Interaction", "VR UI Selection \ud83c\udfaf - Laser pointer object interaction", 48], ["Interface", "Text Chat Core \ud83d\udcac - Persistent message display", 48], ["Audio", "Directional VOIP \ud83d\udd0a - Distance-based voice channel clarity", 40], ["Customization", "UGC Upload \ud83d\udee0\ufe0f - Basic model/texture submission", 40], ["Customization", "Build Duplicator \ud83c\udfd7\ufe0f - Object copy/paste tool", 40], ["Social", "Friend List \ud83d\udc65 - Add/Remove contact system", 40], ["Interaction", "Avatar Calibration \ud83e\udd16 - Height/Scale adjustment sliders", 39], ["Production", "Model Importer \ud83c\udfa8 - FBX/GLB load test", 35], ["Interface", "Emergency Menu \ud83d\udccb - Basic pause/glitch recovery panel", 25], ["Networking", "Object State Sync \ud83d\udd04 - Position/Rotation transmission", 25], ["Audio", "Voice Chat \ud83d\udd0a - Chat with voice", 22], ["Economy", "Item Trade \ud83d\udcb0 - Direct player exchange UI", 22], ["Production", "Investor Demo \ud83d\udcb5 - 5-minute feature showcase", 22], ["Systems", "Script Console \ud83d\udcbb - Runtime command input", 20], ["Customization", "Appearance Swapper \ud83d\udc57 - 3 preset outfit toggle", 20], ["Production", "Poly Budget Tool \ud83d\udd8c\ufe0f - Triangle counter display", 19], ["Audio", "Lip Sync Prototype \ud83d\udd0a - Basic viseme (FACS) triggers from audio input", 18], ["Interaction", "Script Editing Sandbox \ud83d\udcbb - On-the-fly gameplay scripting", 18], ["Economy", "NPC Patrol \ud83e\udd16 - Predefined path walking", 15], ["Systems", "Rule Toggles \u2696\ufe0f - 3 configurable parameters", 15], ["Simulation", "Mood Indicator \ud83d\ude0a - Basic emotion states UI", 6], ["Social", "Emote Wheel \ud83d\ude03 - 6-slot expression selector", 0], ["Simulation", "Hunger Meter \ud83c\udf4e - Time-based depletion", 0], ["Economy", "Wall Painter \ud83c\udfe1 - Single-surface color tool", 0]];
+        const data = [["Host Handoff \ud83c\udfe0 - Basic migration protocol", 90.0, 50.0, 20.0, 95.0], ["Level Streamer \ud83d\ude80 - Section load/unload trigger", 90.0, 0.0, 80.0, 60.0], ["Model Importer \ud83c\udfa8 - FBX/GLB load test", 80.0, 0.0, 0.0, 60.0], ["Multi-User Instance \ud83c\udf10 - 10-player test environment", 100.0, 0.0, 100.0, 100.0], ["Room Transition \ud83d\udd04 - Basic join/leave mechanics", 70.0, 0.0, 60.0, 100.0], ["VRM Trial \ud83d\udd76\ufe0f - Single-avatar import test", 90.0, 0.0, 100.0, 70.0], ["Avatar Calibration \ud83e\udd16 - Height/Scale adjustment sliders", 0.0, 70.0, 0.0, 85.0], ["Directional VOIP \ud83d\udd0a - Distance-based voice channel clarity", 0.0, 100.0, 0.0, 60.0], ["Friend List \ud83d\udc65 - Add/Remove contact system", 0.0, 100.0, 0.0, 60.0], ["Mood Indicator \ud83d\ude0a - Basic emotion states UI", 0.0, 25.0, 0.0, 0.0], ["Skill Progress \ud83d\udcc8 - Experience counter display", 0.0, 75.0, 70.0, 90.0], ["Text Chat Core \ud83d\udcac - Persistent message display", 0.0, 100.0, 0.0, 90.0], ["Build Duplicator \ud83c\udfd7\ufe0f - Object copy/paste tool", 0.0, 0.0, 80.0, 80.0], ["Emergency Menu \ud83d\udccb - Basic pause/glitch recovery panel", 0.0, 0.0, 50.0, 50.0], ["Poly Budget Tool \ud83d\udd8c\ufe0f - Triangle counter display", 0.0, 0.0, 5.0, 70.0], ["UGC Upload \ud83d\udee0\ufe0f - Basic model/texture submission", 0.0, 0.0, 80.0, 80.0], ["VR UI Selection \ud83c\udfaf - Laser pointer object interaction", 0.0, 0.0, 90.0, 100.0], ["Appearance Swapper \ud83d\udc57 - 3 preset outfit toggle", 0.0, 0.0, 0.0, 80.0], ["Investor Demo \ud83d\udcb5 - 5-minute feature showcase", 0.0, 0.0, 0.0, 90.0], ["Item Trade \ud83d\udcb0 - Direct player exchange UI", 0.0, 0.0, 0.0, 90.0], ["Lip Sync Prototype \ud83d\udd0a - Basic viseme (FACS) triggers from audio input", 0.0, 0.0, 0.0, 70.0], ["NPC Patrol \ud83e\udd16 - Predefined path walking", 0.0, 0.0, 0.0, 60.0], ["Object State Sync \ud83d\udd04 - Position/Rotation transmission", 0.0, 0.0, 0.0, 100.0], ["Rule Toggles \u2696\ufe0f - 3 configurable parameters", 0.0, 0.0, 0.0, 60.0], ["Script Console \ud83d\udcbb - Runtime command input", 0.0, 0.0, 0.0, 80.0], ["Script Editing Sandbox \ud83d\udcbb - On-the-fly gameplay scripting", 0.0, 0.0, 0.0, 70.0], ["Voice Chat \ud83d\udd0a - Chat with voice", 0.0, 0.0, 0.0, 90.0]];
 
         // Define the dt_args
         let dt_args = {"paging": false, "layout": {"topStart": "pageLength", "topEnd": "search", "bottomStart": "info", "bottomEnd": "paging"}, "order": [], "warn_on_selected_rows_not_rendered": true};
@@ -428,7 +424,6 @@ Loading ITables v2.2.5 from the <code>init_notebook_mode</code> cell...
 </div>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1000,7 +995,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/roadmap.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/roadmap.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
