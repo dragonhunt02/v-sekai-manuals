@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: main
+          ref: roadmap
           fetch-depth: 0
 
       - name: inspect builder
@@ -21,8 +21,10 @@ jobs:
           git config --global user.email "jackhunt43@libero.it"
           git config --global user.name "dragonhunt02"
 
-          
-          git reset --soft HEAD~35
+          git fetch origin/main
+          git reset --hard origin/main
+          # rm .github/workflows/update-roadmap.yml
+          # git reset --soft HEAD~2
           
           git add -A
           git commit -a -m "Add feature voting system and sortable roadmap page"
