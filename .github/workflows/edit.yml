@@ -26,7 +26,7 @@ jobs:
           #git checkout roadmap
           #git branch -f roadmap main
           #git push -f origin roadmap
-          git reset --hard main
+          git reset --hard origin/main
           # rm .github/workflows/update-roadmap.yml
           # git reset --soft HEAD~2
           
