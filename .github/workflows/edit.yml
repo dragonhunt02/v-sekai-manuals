@@ -21,8 +21,10 @@ jobs:
           git config --global user.email "jackhunt43@libero.it"
           git config --global user.name "dragonhunt02"
 
-          git fetch origin/main
-          git reset --hard origin/main
+          git fetch origin
+          git checkout main
+          git checkout roadmap
+          git reset --hard main
           # rm .github/workflows/update-roadmap.yml
           # git reset --soft HEAD~2
           
