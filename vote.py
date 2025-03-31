@@ -39,12 +39,17 @@ def starvote_election(ballot_list, seats=1):
 def generate_avg_table(ballot_list, tasks_path):
     aggregated_values = defaultdict(list)
 
+    all_keys = {key for ballot in ballot_list for key in ballot} # unique keys set
+
     for ballot in ballot_list:
-        for key, value in ballot.items():
-            if not value.is_integer():
+        for key in all_keys:
+            value = ballot.get(key)
+            if key in ballot and not isinstance(value, int):
                 raise Exception(f"Ballot vote {key} is not an integer")
-            value = max(0, min(value, 100)) # 0-100
-            aggregated_values[key].append(value)
+            elif not key in ballot # add 0 value for average calculation
+                value = 0
+            clamped_value = max(0, min(value, 100)) # 0-100
+            aggregated_values[key].append(clamped_value)
 
     # Compute the average for each key and store in a dictionary
     averages = {key: round(sum(values) / len(values)) for key, values in aggregated_values.items()}
