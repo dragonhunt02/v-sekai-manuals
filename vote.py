@@ -45,8 +45,8 @@ def generate_avg_table(ballot_list, tasks_path):
         for key in all_keys:
             value = ballot.get(key)
             if key in ballot and not isinstance(value, int):
-                raise Exception(f"Ballot vote {key} is not an integer")
-            elif not key in ballot # add 0 value for average calculation
+                raise Exception(f"Ballot vote {key} : {value} is not an integer")
+            elif not key in ballot: # add 0 value for average calculation
                 value = 0
             clamped_value = max(0, min(value, 100)) # 0-100
             aggregated_values[key].append(clamped_value)
