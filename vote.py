@@ -10,17 +10,16 @@ def get_votes(votes_dir):
     folder_path = Path(votes_dir)
     csv_files = folder_path.glob('*.csv')
 
-    ballot_list = {} #[]
+    ballot_dict = {}
     for csv_file in csv_files:
         voter = csv_file.stem
         df = pd.read_csv(csv_file)
         if 'Category' in df.columns:
             df.drop(columns='Category', inplace=True)
         ballot = df.set_index('Task')['Vote'].to_dict()
-        ballot_list[voter] = ballot
-        #ballot_list.append(ballot)
-    print(ballot_list)
-    return ballot_list
+        ballot_dict[voter] = ballot
+    print(ballot_dict)
+    return ballot_dict
 
 def get_votes_list(votes_dir):
     ballots_dict = get_votes(votes_dir)
@@ -58,7 +57,7 @@ def generate_avg_table(ballot_list, tasks_path):
     tasks_df = pd.read_csv(tasks_path)
     tasks_df["Priority"] = 0
     tasks_df.set_index("Task", drop=False, inplace=True)
-# drop=False,
+
     tasks_df.update(averages_df)
     tasks_df.sort_values(by='Priority', ascending=False, inplace=True)
     tasks_df.reset_index(drop=True, inplace=True)
@@ -73,4 +72,6 @@ def run_election(votes_dir, seats, tasks_path):
     avg_table = generate_avg_table(ballot_list, tasks_path)
     return {"avg_table": avg_table, "winners": starvote_winners}
 
-run_election('./roadmap/votes', 2, "./roadmap/tasks.csv")
+election_results = run_election('./roadmap/votes', 2, "./roadmap/tasks.csv")
+print("Winners", json.dumps(election_results[winners], indent=4), sep="\n")
+print("Averaged Votes Table", json.dumps(election_results[avg_table], indent=4), sep="\n")
