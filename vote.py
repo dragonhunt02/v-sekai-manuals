@@ -18,7 +18,7 @@ for csv_file in csv_files:
 print(ballot_list)
 
 # Vote
-seats = 3
+seats = 1
 
 results = starvote.election(
     method=starvote.star if seats < 2 else starvote.allocated,
