@@ -22,4 +22,5 @@ results = vote.run_election('./roadmap/votes', 2, "./roadmap/tasks.csv")
 df = results["avg_table"]
 
 show(df, paging=False)
+show(df, paging=False)
 ```
