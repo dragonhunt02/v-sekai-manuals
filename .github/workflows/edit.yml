@@ -21,16 +21,16 @@ jobs:
           git config --global user.email "jackhunt43@libero.it"
           git config --global user.name "dragonhunt02"
 
-          git fetch origin
+          #git fetch origin
           #git checkout main
           #git checkout roadmap
           #git branch -f roadmap main
           #git push -f origin roadmap
-          git reset --hard origin/main
+          #git reset --hard origin/main
           # rm .github/workflows/update-roadmap.yml
-          # git reset --soft HEAD~2
-          
-          git add -A
-          git commit -a -m "Add feature voting system and sortable roadmap page"
+          #git reset --soft HEAD~1
+          git reset --hard HEAD~1
+          #git add -A
+          #git commit -a -m "Add feature voting system and sortable roadmap page"
           git push -v --force
           #origin roadmap
