@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: roadmap
+          ref: main
           fetch-depth: 0
 
       - name: inspect builder
