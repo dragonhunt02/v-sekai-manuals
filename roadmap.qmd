@@ -39,21 +39,6 @@ Raw votes count
 
 """)
 
-
-from itables import JavascriptFunction
-
-style_function = """function (row, data, index) {
-            if ($array.includes(data[0]) {
-                $$('td').css('background-color', 'red');
-            }
-        }
-"""
-from string import Template
-
-template_style = Template(style_function)
-style_function = template_style.substitute(array=str(results["winners"]))
-# print(style_function)
-
 votes_dict = vote.get_votes('./roadmap/votes')
 votes_df = pd.DataFrame(votes_dict)
 votes_df = votes_df.fillna(0)
