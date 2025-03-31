@@ -22,8 +22,8 @@ jobs:
           git config --global user.name "dragonhunt02"
 
           git fetch origin
-          git checkout main
-          git checkout roadmap
+          #git checkout main
+          #git checkout roadmap
           #git branch -f roadmap main
           #git push -f origin roadmap
           git reset --hard main
@@ -32,4 +32,5 @@ jobs:
           
           git add -A
           git commit -a -m "Add feature voting system and sortable roadmap page"
-          git push -v --force origin roadmap
+          git push -v --force
+          #origin roadmap
