@@ -32,4 +32,4 @@ jobs:
           
           git add -A
           git commit -a -m "Add feature voting system and sortable roadmap page"
-          git push -f origin roadmap
+          git push --force origin roadmap
