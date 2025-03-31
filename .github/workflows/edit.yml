@@ -24,10 +24,12 @@ jobs:
           git fetch origin
           git checkout main
           git checkout roadmap
-          git reset --hard main
+          git branch -f roadmap main
+          git push -f origin roadmap
+          #git reset --hard main
           # rm .github/workflows/update-roadmap.yml
           # git reset --soft HEAD~2
           
-          git add -A
-          git commit -a -m "Add feature voting system and sortable roadmap page"
-          git push -f
+          #git add -A
+          #git commit -a -m "Add feature voting system and sortable roadmap page"
+          #git push -f
