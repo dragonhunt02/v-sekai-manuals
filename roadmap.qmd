@@ -38,7 +38,7 @@ Raw votes count
 
 """)
 
-votes_dict = vote.get_votes()
+votes_dict = vote.get_votes('./roadmap/votes')
 votes_df = pd.DataFrame(votes_dict)
 votes_df = votes_df.fillna(0)
 show(votes_df, paging=False)
