@@ -1,0 +1,33 @@
+name: 🔄 Update Roadmap
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '00 12 */5 * *'
+  # Runs every 5 days at 12:00
+  # Manual trigger is in Actions Tab > Update Roadmap > Run workflow
+
+jobs:
+  update-roadmap:
+    env:
+      ROADMAP_URL: 'https://docs.google.com/spreadsheets/d/1rNBWaDgqbSmt7ZbWAluyytma9rAH3yhomIihibaceVM/export?gid=993631388&exportFormat=tsv'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Update Roadmap
+        run: |
+          pip install pandas starvote
+          python3 vote.py
+          #starvote1.py
+          exit 1
+          curl -o roadmap.tsv -fL "$ROADMAP_URL"
+          sed -i '1d' roadmap.tsv
+          mv -f roadmap.tsv roadmap/roadmap.tsv
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if ! git diff --quiet; then
+              git commit -a -m "Update Roadmap - $(date '+%Y%m%dT%H%M%S')"
+              git push
+          else
+              echo "No changes detected. Nothing to commit."
+          fi
