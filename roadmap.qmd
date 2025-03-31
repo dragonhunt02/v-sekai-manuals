@@ -54,7 +54,12 @@ style_function = template_style.substitute(array=str(results["winners"]))
 print(style_function)
 
 votes_dict = vote.get_votes('./roadmap/votes')
-votes_df = pd.DataFrame(votes_dict, createdRow = JavascriptFunction(style_function))
+votes_df = pd.DataFrame(votes_dict, columnDefs=[
+        {
+            "targets": "_all",
+            "createdCell": JavascriptFunction(style_function)
+}]
+)
 votes_df = votes_df.fillna(0)
 show(votes_df, paging=False)
 ```
