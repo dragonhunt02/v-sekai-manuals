@@ -12,7 +12,7 @@ Features in red are voted as top priority with StarVote. Priority column is an a
 ```{python}
 #| label: roadmap
 #| echo: false
-#| results: asis
+#| output: asis
 
 import vote
 import pandas as pd
