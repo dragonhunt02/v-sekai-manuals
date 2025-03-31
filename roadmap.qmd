@@ -9,12 +9,17 @@ format:
 #| label: roadmap
 #| echo: false
 
+import vote
 import pandas as pd
 from itables import init_notebook_mode, show
 
 init_notebook_mode(all_interactive=False)
 
-df = pd.read_csv("roadmap/roadmap.tsv", sep="\t")
+# df = pd.read_csv("roadmap/roadmap.tsv", sep="\t")
+
+results = vote.run_election('./roadmap/votes', 2, "./roadmap/tasks.csv")
+
+df = results["avg_table"]
 
 show(df, paging=False)
 ```
