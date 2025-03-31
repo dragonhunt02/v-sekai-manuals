@@ -42,15 +42,15 @@ def generate_avg_table(ballot_list, tasks_path):
     # Compute the average for each key and store in a dictionary
     averages = {key: round(sum(values) / len(values)) for key, values in aggregated_values.items()}
     averages_df = pd.DataFrame(list(averages.items()), columns=["Task", "Priority"])
-    averages_df.set_index("Task", drop=False, inplace=True)
+    averages_df.set_index("Task", inplace=True)
 
     print(averages_df.to_string(index=False, header=False))
     print("Averages for each key:", averages)
 
     tasks_df = pd.read_csv(tasks_path)
     tasks_df["Priority"] = 0
-    # tasks_df.set_index("Task", drop=False, inplace=True)
-
+    tasks_df.set_index("Task", inplace=True)
+# drop=False,
     tasks_df.update(averages_df)
 
     print(averages_df)
@@ -63,4 +63,4 @@ def run_election(votes_dir, seats, tasks_path):
     avg_table = generate_avg_table(ballot_list, tasks_path)
     return {"avg_table": avg_table, "winners": starvote_winners}
 
-# run_election('./roadmap/votes', 2, "./roadmap/tasks.csv")
+run_election('./roadmap/votes', 2, "./roadmap/tasks.csv")
