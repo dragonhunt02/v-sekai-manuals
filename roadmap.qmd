@@ -5,10 +5,6 @@ format:
     page-layout: full
 ---
 
-## Feature List
-
-Features in red are voted as top priority with StarVote. Priority column is an average of votes for every feature.
-
 ```{python}
 #| label: roadmap
 #| echo: false
@@ -24,16 +20,27 @@ results = vote.run_election('./roadmap/votes', 5, "./roadmap/tasks.csv")
 
 df = results["avg_table"]
 
-show(df, paging=False)
-
 print("""
 
-## Raw Votes
+## Feature List
 
 Features in red are voted as top priority with StarVote. Priority column is an average of votes for every feature.
 
 """)
 
 show(df, paging=False)
+
+print("""
+
+## Raw Votes
+
+Raw votes count
+
+""")
+
+votes_dict = vote.get_votes()
+votes_df = pd.DataFrame(votes_dict)
+votes_df = votes_df.fillna(0)
+show(votes_df, paging=False)
 ```
 
