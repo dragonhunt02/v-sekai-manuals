@@ -49,7 +49,7 @@ def generate_avg_table(ballot_list, tasks_path):
 
     tasks_df = pd.read_csv(tasks_path)
     tasks_df["Priority"] = 0
-    tasks_df.set_index("Task", drop=False, inplace=True)
+    # tasks_df.set_index("Task", drop=False, inplace=True)
 
     tasks_df.update(averages_df)
 
