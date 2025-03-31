@@ -8,7 +8,6 @@ from collections import defaultdict
 
 def get_votes(votes_dir):
     folder_path = Path(votes_dir)
-    #'./roadmap/votes')
     csv_files = folder_path.glob('*.csv')
 
     ballot_list = []
