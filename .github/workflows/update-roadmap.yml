@@ -19,7 +19,7 @@ jobs:
           #python3 vote.py
           ##starvote1.py
           #exit 1
-          curl -o roadmap.tsv -fL "$ROADMAP_URL"
+          curl -o roadmap.csv -fL "$ROADMAP_URL"
           sed -i '1d' roadmap.csv
           mkdir -p roadmap
           mv -f roadmap.csv roadmap/roadmap.csv
