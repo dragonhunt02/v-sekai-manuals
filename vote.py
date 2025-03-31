@@ -29,3 +29,14 @@ results = starvote.election(
 )
 
 print(json.dumps(results, indent=4))
+
+aggregated_values = defaultdict(list)
+
+for ballot in ballot_list:
+    for key, value in ballot.items():
+        aggregated_values[key].append(value)
+
+# Step 2: Compute the average for each key and store in a dictionary
+averages = {key: sum(values) / len(values) for key, values in aggregated_values.items()}
+
+print("Averages for each key:", averages)
