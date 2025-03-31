@@ -38,7 +38,7 @@ for ballot in ballot_list:
 
 # Step 2: Compute the average for each key and store in a dictionary
 averages = {key: round(sum(values) / len(values)) for key, values in aggregated_values.items()}
-averages_df = pd.DataFrame(averages.items(), columns=["Task", "Priority"])
+averages_df = pd.DataFrame(list(averages.items()), columns=["Task", "Priority"])
 
 print("Averages for each key:", averages)
 
