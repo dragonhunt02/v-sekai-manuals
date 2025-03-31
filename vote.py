@@ -41,6 +41,8 @@ averages = {key: round(sum(values) / len(values)) for key, values in aggregated_
 averages_df = pd.DataFrame(list(averages.items()), columns=["Task", "Priority"])
 averages_df.set_index("Task", drop=False, inplace=True)
 
+print(averages_df.to_string(index=False, header=False))
+
 print("Averages for each key:", averages)
 
 tasks_df = pd.read_csv("./roadmap/tasks.csv")
