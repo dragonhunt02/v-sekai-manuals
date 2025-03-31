@@ -1,5 +1,5 @@
 # Feature Voting System
-Election is run with `vote.py` using `StarVote` to determine top features and an averaged vote table.
+Election is run with `vote.py` using `StarVote` to determine top features and an averaged vote table for ranking.
 
 Every voter has a .csv file with votes to cast.
 
