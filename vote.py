@@ -47,7 +47,7 @@ tasks_df = pd.read_csv("./roadmap/tasks.csv")
 tasks_df["Priority"] = 0
 tasks_df.set_index("Task", drop=False, inplace=True)
 
-tasks_df.update(averages_df, inplace=True)
+tasks_df.update(averages_df)
 
 print(averages_df)
 print(tasks_df)
