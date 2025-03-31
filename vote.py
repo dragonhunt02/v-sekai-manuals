@@ -30,7 +30,7 @@ def starvote_election(ballot_list, seats=1):
     print(json.dumps(results, indent=4))
     return results
 
-def generate_avg_table(ballot_list):
+def generate_avg_table(ballot_list, tasks_path):
     aggregated_values = defaultdict(list)
 
     for ballot in ballot_list:
@@ -48,7 +48,7 @@ def generate_avg_table(ballot_list):
     print(averages_df.to_string(index=False, header=False))
     print("Averages for each key:", averages)
 
-    tasks_df = pd.read_csv("./roadmap/tasks.csv")
+    tasks_df = pd.read_csv(tasks_path)
     tasks_df["Priority"] = 0
     tasks_df.set_index("Task", drop=False, inplace=True)
 
@@ -58,10 +58,10 @@ def generate_avg_table(ballot_list):
     print(tasks_df)
     return tasks_df
 
-def run_election(votes_dir):
+def run_election(votes_dir, seats, tasks_path):
     ballot_list = get_votes(votes_dir)
-    starvote_winners = starvote_election(ballot_list, 2)
-    avg_table = generate_avg_table(ballot_list)
-    return { "avg_table": avg_table, "winners": starvote_winners }
+    starvote_winners = starvote_election(ballot_list, seats)
+    avg_table = generate_avg_table(ballot_list, tasks_path)
+    return {"avg_table": avg_table, "winners": starvote_winners}
 
-run_election('./roadmap/votes')
+run_election('./roadmap/votes', 2, "./roadmap/tasks.csv")
