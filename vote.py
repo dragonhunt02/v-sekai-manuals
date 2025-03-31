@@ -36,7 +36,7 @@ def generate_avg_table(ballot_list, tasks_path):
         for key, value in ballot.items():
             if not value.is_integer():
                 raise Exception(f"Ballot vote {key} is not an integer")
-            value = max(0, min(value, 100)) #clamp
+            value = max(0, min(value, 100)) # 0-100
             aggregated_values[key].append(value)
 
     # Compute the average for each key and store in a dictionary
@@ -63,4 +63,4 @@ def run_election(votes_dir, seats, tasks_path):
     avg_table = generate_avg_table(ballot_list, tasks_path)
     return {"avg_table": avg_table, "winners": starvote_winners}
 
-run_election('./roadmap/votes', 2, "./roadmap/tasks.csv")
+# run_election('./roadmap/votes', 2, "./roadmap/tasks.csv")
