@@ -4,3 +4,5 @@ Election is run with `vote.py` using `StarVote` to determine top features and an
 Every voter has a .csv file with votes to cast.
 
 To create a new voter, copy and rename tasks.csv in `votes/` folder, then add a `Vote` column in csv and set your voted priority (0-100) for a feature.
+
+New features must be added to `tasks.csv` before casting any vote.
