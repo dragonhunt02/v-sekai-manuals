@@ -60,7 +60,7 @@ def generate_avg_table(ballot_list):
 
 def run_election(votes_dir):
     ballot_list = get_votes(votes_dir)
-    starvote_winners = starvote_election(ballot_list, 5)
+    starvote_winners = starvote_election(ballot_list, 2)
     avg_table = generate_avg_table(ballot_list)
     return { "avg_table": avg_table, "winners": starvote_winners }
 
