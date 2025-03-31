@@ -10,13 +10,21 @@ def get_votes(votes_dir):
     folder_path = Path(votes_dir)
     csv_files = folder_path.glob('*.csv')
 
-    ballot_list = []
+    ballot_list = {} #[]
     for csv_file in csv_files:
+        voter = csv_file.stem
         df = pd.read_csv(csv_file)
+        if 'Category' in df.columns:
+            df.drop(columns='Category', inplace=True)
         ballot = df.set_index('Task')['Vote'].to_dict()
-        ballot_list.append(ballot)
+        ballot_list[voter] = ballot
+        #ballot_list.append(ballot)
     print(ballot_list)
     return ballot_list
+
+def get_votes_list(votes_dir):
+    ballots_dict = get_votes(votes_dir)
+    return ballots_dict.values()
 
 def starvote_election(ballot_list, seats=1):
     results = starvote.election(
@@ -60,7 +68,7 @@ def generate_avg_table(ballot_list, tasks_path):
     return tasks_df
 
 def run_election(votes_dir, seats, tasks_path):
-    ballot_list = get_votes(votes_dir)
+    ballot_list = get_votes_list(votes_dir)
     starvote_winners = starvote_election(ballot_list, seats)
     avg_table = generate_avg_table(ballot_list, tasks_path)
     return {"avg_table": avg_table, "winners": starvote_winners}
