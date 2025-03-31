@@ -37,6 +37,6 @@ for ballot in ballot_list:
         aggregated_values[key].append(value)
 
 # Step 2: Compute the average for each key and store in a dictionary
-averages = {key: sum(values) / len(values) for key, values in aggregated_values.items()}
+averages = {key: round(sum(values) / len(values)) for key, values in aggregated_values.items()}
 
 print("Averages for each key:", averages)
