@@ -19,6 +19,7 @@ init_notebook_mode(all_interactive=False)
 results = vote.run_election('./roadmap/votes', 5, "./roadmap/tasks.csv")
 
 df = results["avg_table"]
+df.loc[df["Task"].isin(results["winners"]), "Task"] += " ✴️(Updated)"
 
 print("""
 
@@ -51,16 +52,11 @@ from string import Template
 
 template_style = Template(style_function)
 style_function = template_style.substitute(array=str(results["winners"]))
-print(style_function)
+# print(style_function)
 
 votes_dict = vote.get_votes('./roadmap/votes')
 votes_df = pd.DataFrame(votes_dict)
 votes_df = votes_df.fillna(0)
-show(votes_df, paging=False, columnDefs=[
-        {
-            "targets": "_all",
-            "createdCell": JavascriptFunction(style_function)
-}]
-)
+show(votes_df, paging=False)
 ```
 
