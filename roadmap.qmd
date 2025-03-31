@@ -40,16 +40,10 @@ Raw votes count
 
 
 from itables import JavascriptFunction
-import itables.options as opt
-opt.css = opt.css + """
-td.highlight {
-        font-weight: bold;
-        color: blue;
-    }"""
 
 style_function = """function (row, data, index) {
             if ($array.includes(data[0]) {
-                $$('td', row).addClass('highlight');
+                $$('td').css('background-color', 'red');
             }
         }
 """
