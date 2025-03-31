@@ -69,6 +69,10 @@ def run_election(votes_dir, seats, tasks_path):
     avg_table = generate_avg_table(ballot_list, tasks_path)
     return {"avg_table": avg_table, "winners": starvote_winners}
 
-election_results = run_election('./roadmap/votes', 2, "./roadmap/tasks.csv")
-print("Winners", json.dumps(election_results["winners"], indent=4), sep="\n")
-print("Averaged Votes Table", election_results["avg_table"], sep="\n")
+def main():
+    election_results = run_election('./roadmap/votes', 2, "./roadmap/tasks.csv")
+    print("Winners", json.dumps(election_results["winners"], indent=4), sep="\n")
+    print("Averaged Votes Table", election_results["avg_table"], sep="\n")
+
+if __name__ == "__main__":
+    main()
