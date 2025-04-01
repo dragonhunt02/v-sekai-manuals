@@ -14,8 +14,9 @@ def get_votes(votes_dir):
     for csv_file in csv_files:
         voter = csv_file.stem
         df = pd.read_csv(csv_file)
-        if 'Category' in df.columns:
-            df.drop(columns='Category', inplace=True)
+        for col in df.columns:
+            if col not in ['Task', 'Vote']:
+                df.drop(columns=col, inplace=True)
         ballot = df.set_index('Task')['Vote'].to_dict()
         ballot_dict[voter] = ballot
     return ballot_dict
@@ -24,7 +25,23 @@ def get_votes_list(votes_dir):
     ballots_dict = get_votes(votes_dir)
     return ballots_dict.values()
 
-def starvote_election(ballot_list, seats=1):
+def filter_ballot_tasks(ballot_list, tasks_path):
+    tasks_df = pd.read_csv(tasks_path)
+    tasks = tasks_df["Task"].tolist()
+    filtered_ballot_list = []
+    for ballot in ballot_list:
+        filtered_ballot = {}
+        for key, value in ballot.items():
+            if key in tasks:
+                filtered_ballot[key] = value
+        filtered_ballot_list.append(filtered_ballot)
+    return filtered_ballot_list
+
+def starvote_election(ballot_list, seats=1, tasks_path=None):
+    # Filter out task votes for inactive tasks
+    if tasks_path:
+        ballot_list = filter_ballot_tasks(ballot_list, tasks_path)
+
     results = starvote.election(
         method=starvote.star if seats < 2 else starvote.allocated,
         ballots=ballot_list,
@@ -54,11 +71,12 @@ def generate_avg_table(ballot_list, tasks_path):
     averages_df = pd.DataFrame(list(averages.items()), columns=["Task", "Priority"])
     averages_df.set_index("Task", drop=False, inplace=True)
 
+    # Use tasks.csv as base table to discard inactive tasks
     tasks_df = pd.read_csv(tasks_path)
     tasks_df["Priority"] = 0
     tasks_df.set_index("Task", drop=False, inplace=True)
-
     tasks_df.update(averages_df)
+
     tasks_df.sort_values(by='Priority', ascending=False, inplace=True)
     tasks_df.reset_index(drop=True, inplace=True)
     return tasks_df
