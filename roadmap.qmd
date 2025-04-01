@@ -19,6 +19,8 @@ init_notebook_mode(all_interactive=False)
 results = vote.run_election('./roadmap/votes', 5, "./roadmap/tasks.csv")
 
 df = results["avg_table"]
+if "Archived_on" in df.columns:
+    df = df.drop(columns=["Archived on"])
 
 # Move high priority to top
 df["highpriority"] = df["Task"].apply(lambda x: 0 if x in results["winners"] else 1)
@@ -49,4 +51,14 @@ votes_dict = vote.get_votes('./roadmap/votes')
 votes_df = pd.DataFrame(votes_dict)
 votes_df = votes_df.fillna(0)
 show(votes_df, paging=False)
+
+print("""
+## Archived Tasks
+
+Archived tasks
+
+""")
+
+archived_tasks_df = vote.get_archived_tasks_table('./roadmap/tasks.csv')
+show(archived_tasks_df)
 ```
