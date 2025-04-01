@@ -25,22 +25,25 @@ def get_votes_list(votes_dir):
     ballots_dict = get_votes(votes_dir)
     return ballots_dict.values()
 
-def filter_ballot_tasks(ballot_list, tasks_path):
+def filter_ballots_by_active_tasks(ballot_list, tasks_path):
     tasks_df = pd.read_csv(tasks_path)
     tasks = tasks_df["Task"].tolist()
+
     filtered_ballot_list = []
     for ballot in ballot_list:
         filtered_ballot = {}
         for key, value in ballot.items():
             if key in tasks:
                 filtered_ballot[key] = value
+            else:
+                print("Inactive key {key}")
         filtered_ballot_list.append(filtered_ballot)
     return filtered_ballot_list
 
 def starvote_election(ballot_list, seats=1, tasks_path=None):
     # Filter out task votes for inactive tasks
     if tasks_path:
-        ballot_list = filter_ballot_tasks(ballot_list, tasks_path)
+        ballot_list = filter_ballots_by_active_tasks(ballot_list, tasks_path)
 
     results = starvote.election(
         method=starvote.star if seats < 2 else starvote.allocated,
