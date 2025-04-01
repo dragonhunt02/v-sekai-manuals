@@ -30,7 +30,7 @@ jobs:
           # rm .github/workflows/update-roadmap.yml
           #git reset --hard HEAD~1
 
-          git reset --soft HEAD~18
+          git reset --soft HEAD~2
           git add -A
           git commit -a -m "Add archived tasks section to roadmap and small fixes"
           git push -f
