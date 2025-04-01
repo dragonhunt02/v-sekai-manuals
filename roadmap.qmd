@@ -20,7 +20,7 @@ results = vote.run_election('./roadmap/votes', 5, "./roadmap/tasks.csv")
 
 df = results["avg_table"]
 if "Archived_on" in df.columns:
-    df = df.drop(columns=["Archived on"])
+    df = df.drop(columns=["Archived_on"])
 
 # Move high priority to top
 df["highpriority"] = df["Task"].apply(lambda x: 0 if x in results["winners"] else 1)
