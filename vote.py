@@ -36,7 +36,7 @@ def filter_ballots_by_active_tasks(ballot_list, tasks_path):
             if key in tasks:
                 filtered_ballot[key] = value
             else:
-                print("Inactive key {key}")
+                print(f"Inactive key {key}")
         filtered_ballot_list.append(filtered_ballot)
     return filtered_ballot_list
 
