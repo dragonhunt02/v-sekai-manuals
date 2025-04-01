@@ -242,7 +242,7 @@ This is the <code>init_notebook_mode</code> cell from ITables v2.2.5<br>
 <section id="feature-list" class="level2">
 <h2 class="anchored" data-anchor-id="feature-list">Feature List</h2>
 <p>Features with 🚨 symbol were voted as top priority with StarVote. Priority column is an average of votes for every feature.</p>
-<table id="itables_44cfe4c0_9959_47b7_8934_3fe4fe16aff3" class="display nowrap" data-quarto-disable-processing="true" style="table-layout:auto;width:auto;margin:auto;caption-side:bottom">
+<table id="itables_0d9df8f4_0c2d_4e59_8bf3_cae6aac3a018" class="display nowrap" data-quarto-disable-processing="true" style="table-layout:auto;width:auto;margin:auto;caption-side:bottom">
 <thead>
     <tr style="text-align: right;">
       
@@ -316,7 +316,7 @@ Loading ITables v2.2.5 from the <code>init_notebook_mode</code> cell...
 <script type="module">
     const { DataTable, jQuery: $ } = await import(window._datatables_src_for_itables_2_2_5);
 
-    document.querySelectorAll("#itables_44cfe4c0_9959_47b7_8934_3fe4fe16aff3:not(.dataTable)").forEach(table => {
+    document.querySelectorAll("#itables_0d9df8f4_0c2d_4e59_8bf3_cae6aac3a018:not(.dataTable)").forEach(table => {
         if (!(table instanceof HTMLTableElement))
             return;
 
@@ -335,7 +335,7 @@ Loading ITables v2.2.5 from the <code>init_notebook_mode</code> cell...
 <section id="raw-votes" class="level2">
 <h2 class="anchored" data-anchor-id="raw-votes">Raw Votes</h2>
 <p>Raw votes count</p>
-<table id="itables_0f79b1dc_947a_4263_8a8d_a9080817726e" class="display nowrap" data-quarto-disable-processing="true" style="table-layout:auto;width:auto;margin:auto;caption-side:bottom">
+<table id="itables_4620152c_cdaf_4da9_b617_c0b7bc0ede43" class="display nowrap" data-quarto-disable-processing="true" style="table-layout:auto;width:auto;margin:auto;caption-side:bottom">
 <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -410,7 +410,7 @@ Loading ITables v2.2.5 from the <code>init_notebook_mode</code> cell...
 <script type="module">
     const { DataTable, jQuery: $ } = await import(window._datatables_src_for_itables_2_2_5);
 
-    document.querySelectorAll("#itables_0f79b1dc_947a_4263_8a8d_a9080817726e:not(.dataTable)").forEach(table => {
+    document.querySelectorAll("#itables_4620152c_cdaf_4da9_b617_c0b7bc0ede43:not(.dataTable)").forEach(table => {
         if (!(table instanceof HTMLTableElement))
             return;
 
@@ -419,6 +419,101 @@ Loading ITables v2.2.5 from the <code>init_notebook_mode</code> cell...
 
         // Define the dt_args
         let dt_args = {"paging": false, "layout": {"topStart": "pageLength", "topEnd": "search", "bottomStart": "info", "bottomEnd": "paging"}, "order": [], "warn_on_selected_rows_not_rendered": true};
+        dt_args["data"] = data;
+
+        
+        new DataTable(table, dt_args);
+    });
+</script>
+</section>
+<section id="archived-tasks" class="level2">
+<h2 class="anchored" data-anchor-id="archived-tasks">Archived Tasks</h2>
+<p>Archived tasks</p>
+<pre><code>/home/runner/work/v-sekai-manuals/v-sekai-manuals/vote.py:29: FutureWarning: The argument 'infer_datetime_format' is deprecated and will be removed in a future version. A strict version of it is now the default, see https://pandas.pydata.org/pdeps/0004-consistent-to-datetime-parsing.html. You can safely remove this argument.
+  tasks_df = pd.read_csv(tasks_path, parse_dates=['Archived_on'],</code></pre>
+<table id="itables_1ee97c47_ac1d_4cf4_a42c_d0948735dac6" class="display nowrap" data-quarto-disable-processing="true" style="table-layout:auto;width:auto;margin:auto;caption-side:bottom">
+<thead>
+    <tr style="text-align: right;">
+      
+      <th>Category</th>
+      <th>Task</th>
+      <th>Archived_on</th>
+    </tr>
+  </thead><tbody><tr>
+<td style="vertical-align:middle; text-align:left">
+<a href="https://mwouts.github.io/itables/"><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="64" viewbox="0 0 500 400" style="font-family: 'Droid Sans', sans-serif;">
+    <g style="fill:#d9d7fc">
+        <path d="M100,400H500V357H100Z"></path>
+        <path d="M100,300H400V257H100Z"></path>
+        <path d="M0,200H400V157H0Z"></path>
+        <path d="M100,100H500V57H100Z"></path>
+        <path d="M100,350H500V307H100Z"></path>
+        <path d="M100,250H400V207H100Z"></path>
+        <path d="M0,150H400V107H0Z"></path>
+        <path d="M100,50H500V7H100Z"></path>
+    </g>
+    <g style="fill:#1a1366;stroke:#1a1366;">
+   <rect x="100" y="7" width="400" height="43">
+    <animate attributename="width" values="0;400;0" dur="5s" repeatcount="indefinite"></animate>
+      <animate attributename="x" values="100;100;500" dur="5s" repeatcount="indefinite"></animate>
+  </rect>
+        <rect x="0" y="107" width="400" height="43">
+    <animate attributename="width" values="0;400;0" dur="3.5s" repeatcount="indefinite"></animate>
+    <animate attributename="x" values="0;0;400" dur="3.5s" repeatcount="indefinite"></animate>
+  </rect>
+        <rect x="100" y="207" width="300" height="43">
+    <animate attributename="width" values="0;300;0" dur="3s" repeatcount="indefinite"></animate>
+    <animate attributename="x" values="100;100;400" dur="3s" repeatcount="indefinite"></animate>
+  </rect>
+        <rect x="100" y="307" width="400" height="43">
+    <animate attributename="width" values="0;400;0" dur="4s" repeatcount="indefinite"></animate>
+      <animate attributename="x" values="100;100;500" dur="4s" repeatcount="indefinite"></animate>
+  </rect>
+        <g style="fill:transparent;stroke-width:8; stroke-linejoin:round" rx="5">
+            <g transform="translate(45 50) rotate(-45)">
+                <circle r="33" cx="0" cy="0"></circle>
+                <rect x="-8" y="32" width="16" height="30"></rect>
+            </g>
+
+            <g transform="translate(450 152)">
+                <polyline points="-15,-20 -35,-20 -35,40 25,40 25,20"></polyline>
+                <rect x="-15" y="-40" width="60" height="60"></rect>
+            </g>
+
+            <g transform="translate(50 352)">
+                <polygon points="-35,-5 0,-40 35,-5"></polygon>
+                <polygon points="-35,10 0,45 35,10"></polygon>
+            </g>
+
+            <g transform="translate(75 250)">
+                <polyline points="-30,30 -60,0 -30,-30"></polyline>
+                <polyline points="0,30 -30,0 0,-30"></polyline>
+            </g>
+
+            <g transform="translate(425 250) rotate(180)">
+                <polyline points="-30,30 -60,0 -30,-30"></polyline>
+                <polyline points="0,30 -30,0 0,-30"></polyline>
+            </g>
+        </g>
+    </g>
+</svg>
+</a>
+Loading ITables v2.2.5 from the <code>init_notebook_mode</code> cell...
+(need <a href="https://mwouts.github.io/itables/troubleshooting.html">help</a>?)</td>
+</tr></tbody>
+</table>
+<script type="module">
+    const { DataTable, jQuery: $ } = await import(window._datatables_src_for_itables_2_2_5);
+
+    document.querySelectorAll("#itables_1ee97c47_ac1d_4cf4_a42c_d0948735dac6:not(.dataTable)").forEach(table => {
+        if (!(table instanceof HTMLTableElement))
+            return;
+
+        // Define the table data
+        const data = [["Customization", "Appearance Swapper \ud83d\udc57 - 3 preset outfit toggle", "NaT"], ["Interaction", "Avatar Calibration \ud83e\udd16 - Height/Scale adjustment sliders", "NaT"], ["Customization", "Build Duplicator \ud83c\udfd7\ufe0f - Object copy/paste tool", "NaT"], ["Audio", "Directional VOIP \ud83d\udd0a - Distance-based voice channel clarity", "NaT"], ["Interface", "Emergency Menu \ud83d\udccb - Basic pause/glitch recovery panel", "NaT"], ["Social", "Emote Wheel \ud83d\ude03 - 6-slot expression selector", "NaT"], ["Social", "Friend List \ud83d\udc65 - Add/Remove contact system", "NaT"], ["Systems", "Host Handoff \ud83c\udfe0 - Basic migration protocol", "NaT"], ["Simulation", "Hunger Meter \ud83c\udf4e - Time-based depletion", "NaT"], ["Production", "Investor Demo \ud83d\udcb5 - 5-minute feature showcase", "NaT"], ["Economy", "Item Trade \ud83d\udcb0 - Direct player exchange UI", "NaT"], ["Production", "Level Streamer \ud83d\ude80 - Section load/unload trigger", "NaT"], ["Audio", "Lip Sync Prototype \ud83d\udd0a - Basic viseme (FACS) triggers from audio input", "NaT"], ["Production", "Model Importer \ud83c\udfa8 - FBX/GLB load test", "NaT"], ["Simulation", "Mood Indicator \ud83d\ude0a - Basic emotion states UI", "NaT"], ["Networking", "Multi-User Instance \ud83c\udf10 - 10-player test environment", "NaT"], ["Economy", "NPC Patrol \ud83e\udd16 - Predefined path walking", "NaT"], ["Networking", "Object State Sync \ud83d\udd04 - Position/Rotation transmission", "NaT"], ["Production", "Poly Budget Tool \ud83d\udd8c\ufe0f - Triangle counter display", "NaT"], ["Networking", "Room Transition \ud83d\udd04 - Basic join/leave mechanics", "NaT"], ["Systems", "Rule Toggles \u2696\ufe0f - 3 configurable parameters", "NaT"], ["Systems", "Script Console \ud83d\udcbb - Runtime command input", "NaT"], ["Interaction", "Script Editing Sandbox \ud83d\udcbb - On-the-fly gameplay scripting", "NaT"], ["Simulation", "Skill Progress \ud83d\udcc8 - Experience counter display", "NaT"], ["Audio", "Voice Chat \ud83d\udd0a - Chat with voice", "NaT"], ["Interface", "Text Chat Core \ud83d\udcac - Persistent message display", "NaT"], ["Customization", "UGC Upload \ud83d\udee0\ufe0f - Basic model/texture submission", "NaT"], ["Interaction", "VR UI Selection \ud83c\udfaf - Laser pointer object interaction", "NaT"], ["Social", "VRM Trial \ud83d\udd76\ufe0f - Single-avatar import test", "NaT"], ["Economy", "Wall Painter \ud83c\udfe1 - Single-surface color tool", "NaT"]];
+
+        // Define the dt_args
+        let dt_args = {"layout": {"topStart": "pageLength", "topEnd": "search", "bottomStart": "info", "bottomEnd": "paging"}, "order": [], "warn_on_selected_rows_not_rendered": true};
         dt_args["data"] = data;
 
         
