@@ -134,11 +134,12 @@ styles = [
         'selector': 'node[type = "Godot"]',
         'style': {
             'label': 'data(label)',
+            'shape': 'ellipse',
             'text-overflow': 'ellipsis',
             'text-max-width': '80px', 
             'background-color': '#D9544D',
             'border-color': 'black',
-            'border-width': 3,
+            'border-width': 2,
             'width': 40,
             'height': 40,
             'text-valign': 'center',
