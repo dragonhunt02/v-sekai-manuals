@@ -147,7 +147,12 @@ styles = [
 ]
 
 cyto.set_style(styles)
-cyto.set_layout(name='dagre')
+# cyto.set_layout(name='dagre')
+cyto.set_layout(
+    name='breadthfirst',
+    roots=[node for node in F.nodes() if F.in_degree(node) == 0],
+    spacingFactor=1.2
+)
 
 # Display
 cyto
