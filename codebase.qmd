@@ -9,6 +9,18 @@ format:
 #| label: Codebase
 #| echo: false
 #| output: asis
+import subprocess
+
+repo_url = "https://github.com/V-Sekai/v-sekai-game.git"
+clone_dir = "v-sekai-game"  # or omit this argument to clone into a folder named after the repository
+try:
+    result = subprocess.run(
+        ["git", "clone", repo_url, clone_dir], check=True, capture_output=True, text=True
+    )
+    print("Repository cloned successfully!")
+    print("Output:", result.stdout)
+except subprocess.CalledProcessError as error:
+    print("Error: can't clone repository :", error.stderr)
 
 import networkx as nx
 from ipycytoscape import CytoscapeWidget
