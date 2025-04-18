@@ -46,19 +46,20 @@ for root, _, files in os.walk(clone_dir):
                         continue
                     indent = len(line) - len(line.lstrip())
                     if indent == 0: # reset
-                        print("\nreset")
                         class_counter = 0
                         class_name = ""
 
                     match_parent = pattern_extends.search(line)
                     match_classname = pattern_classname.search(line)
                     if match_classname:
+                        print("\nmatched classname")
                         class_counter += 1
                         class_name = match_classname.group(1)
                         continue
                     elif match_parent:
                         parent_name = match_parent.group(1)
                         if class_counter == 0:
+                            print("\nroot class")
                             class_name = parent_name
                         #else:
                         #    class_name = class_name
