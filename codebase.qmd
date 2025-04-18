@@ -73,6 +73,20 @@ for root, _, files in os.walk(clone_dir):
 
 print(results)
 
+def ensure_root_parents_exist(entries, default_parent="Root"):
+    id_set = {entry["id"] for entry in entries if entry.get("id")}
+    missing_parents = {entry["parent"] for entry in entries 
+                       if entry.get("parent") and entry["parent"] not in id_set}
+    for parent in missing_parents:
+        entries.append({
+            "id": parent,
+            "parent": default_parent
+        })
+    
+    return entries
+
+results = ensure_root_parents_exist(results, "Godot")
+
 import networkx as nx
 from ipycytoscape import CytoscapeWidget
 
