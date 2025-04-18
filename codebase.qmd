@@ -61,7 +61,7 @@ for root, _, files in os.walk(clone_dir):
                             class_name = parent_name
                         #else:
                         #    class_name = class_name
-                        print(f"\nMatch in {file_path}, line {line_number}: {capture}")
+                        print(f"\nMatch in {file_path}, line {line_number}: {class_name} count {class_counter}")
                         results.append({
                             "id": class_name,
                             "parent": parent_name,
