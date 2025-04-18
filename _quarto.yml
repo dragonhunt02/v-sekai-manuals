@@ -1,7 +1,8 @@
 project:
   type: website
   output-dir: _site
-
+  render:
+    - codebase.qmd
 resources:
   - decisions/attachments
 
@@ -22,6 +23,8 @@ website:
         file: changelog.qmd
       - text: "Decisions"
         file: decisions.qmd
+      - text: "Codebase"
+        file: codebase.qmd
       - text: "Roadmap"
         file: roadmap.qmd
   page-footer:
