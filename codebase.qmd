@@ -6,6 +6,10 @@ format:
 ---
 
 ```{python}
+#| label: Codebase
+#| echo: false
+#| output: asis
+
 import networkx as nx
 from ipycytoscape import CytoscapeWidget
 
