@@ -103,7 +103,7 @@ G.add_edge("Dog", "Leg", relationship="composition")
 data = results
 F = nx.DiGraph()
 for item in data:
-    F.add_node(item["id"], path=item["path"], line=item["line"])
+    F.add_node(item["id"], label=item["id"], path=item["path"], line=item["line"])
     F.add_edge(item["parent"], item["id"], relationship="inheritance")
 
 cyto = CytoscapeWidget()
@@ -116,6 +116,8 @@ styles = [
         'selector': 'node',
         'style': {
             'label': 'data(label)',
+            'text-overflow': 'ellipsis',
+            'text-max-width': '80px', 
             'background-color': '#BFD7B5',
             'border-color': 'black',
             'border-width': 1,
@@ -154,7 +156,14 @@ cyto.set_style(styles)
 #    spacingFactor=1.2
 #)
 #cyto.set_layout(name='concentric', spacingFactor=1.0)
-cyto.set_layout(name='cose', animate=True)
+#cyto.set_layout(name='cose', animate=True)
+cyto.set_layout(
+    name='cose',
+    animate=False,
+    idealEdgeLength=100,
+    nodeRepulsion=4000,
+    avoidOverlap=True 
+)
 
 # Display
 cyto
