@@ -1,0 +1,120 @@
+---
+title: "Codebase"
+format: 
+  html:
+    page-layout: full
+---
+
+```{python}
+#| label: Codebase
+#| echo: false
+#| output: asis
+import subprocess
+
+repo_url = "https://github.com/V-Sekai/v-sekai-game.git"
+clone_dir = "v-sekai-game"  # or omit this argument to clone into a folder named after the repository
+try:
+    result = subprocess.run(
+        ["git", "clone", repo_url, clone_dir], check=True, capture_output=True, text=True
+    )
+    print("Repository cloned successfully!")
+    print("Output:", result.stdout)
+except subprocess.CalledProcessError as error:
+    print("Error: can't clone repository :", error.stderr)
+
+import os
+import re
+
+results = []
+regex_pattern = r'\bextends\s+"?(.+?)"?\b'  # Example pattern to match capitalized words.
+pattern = re.compile(regex_pattern)
+
+for root, _, files in os.walk(clone_dir):
+    for file in files:
+        if file.endswith(".gd"):
+            file_path = os.path.join(root, file)
+            with open(file_path, "r", encoding="utf-8") as f:
+                content = f.read()
+                matches = pattern.findall(content)
+                if matches:
+                    print(f"Matches in {file_path}:")
+                    print(f"leng{len(matches)}:")
+                    for capture in matches:
+                      print(capture)
+                      results.append({"id": file_path, "parent": capture})
+
+print(results)
+
+import networkx as nx
+from ipycytoscape import CytoscapeWidget
+
+G = nx.DiGraph()
+
+# Add nodes representing classes, optionally with attributes
+nodes = [
+    ("Animal", {"label": "Animal"}),
+    ("Mammal", {"label": "Mammal"}),
+    ("Bird", {"label": "Bird"}),
+    ("Dog", {"label": "Dog"}),
+    ("Cat", {"label": "Cat"}),
+    ("Sparrow", {"label": "Sparrow"}),
+    ("Leg", {"label": "Leg"})  # Example for composition
+]
+
+G.add_nodes_from(nodes)
+
+# Add edges for inheritance relationships
+G.add_edge("Animal", "Mammal", relationship="inheritance")
+G.add_edge("Animal", "Bird", relationship="inheritance")
+G.add_edge("Mammal", "Dog", relationship="inheritance")
+G.add_edge("Mammal", "Cat", relationship="inheritance")
+G.add_edge("Bird", "Sparrow", relationship="inheritance")
+
+G.add_edge("Dog", "Leg", relationship="composition")
+
+cyto = CytoscapeWidget()
+
+# Convert NetworkX graph for ipycytoscape.
+cyto.graph.add_graph_from_networkx(G, directed=True)
+
+styles = [
+    {
+        'selector': 'node',
+        'style': {
+            'label': 'data(label)',
+            'background-color': '#BFD7B5',
+            'border-color': 'black',
+            'border-width': 1,
+            'width': 40,
+            'height': 40,
+            'text-valign': 'center',
+            'text-halign': 'center',
+            'font-size': '10px'
+        }
+    },
+    {
+        'selector': 'edge[relationship = "inheritance"]',
+        'style': {
+            'line-color': '#0074D9',
+            'target-arrow-shape': 'triangle',
+            'target-arrow-color': '#0074D9',
+            'curve-style': 'bezier'
+        }
+    },
+    {
+        'selector': 'edge[relationship = "composition"]',
+        'style': {
+            'line-color': '#FF4136',
+            'target-arrow-shape': 'diamond',
+            'target-arrow-color': '#FF4136',
+            'curve-style': 'bezier'
+        }
+    }
+]
+
+cyto.set_style(styles)
+cyto.set_layout(name='dagre')
+
+# Display
+cyto
+```
