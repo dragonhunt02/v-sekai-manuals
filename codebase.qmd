@@ -25,7 +25,7 @@ except subprocess.CalledProcessError as error:
 import os
 import re
 
-regex_pattern = r'\bextends\s+"(.+)"'  # Example pattern to match capitalized words.
+regex_pattern = r'\bextends\s+"(.+?)"'  # Example pattern to match capitalized words.
 pattern = re.compile(regex_pattern)
 
 for root, _, files in os.walk(clone_dir):
