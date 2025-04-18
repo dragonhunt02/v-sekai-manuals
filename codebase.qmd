@@ -100,10 +100,16 @@ G.add_edge("Bird", "Sparrow", relationship="inheritance")
 
 G.add_edge("Dog", "Leg", relationship="composition")
 
+data = results
+F = nx.DiGraph()
+for item in data:
+    G.add_node(item["id"], path=item["path"], line=item["line"])
+    G.add_edge(item["parent"], item["id"])
+
 cyto = CytoscapeWidget()
 
 # Convert NetworkX graph for ipycytoscape.
-cyto.graph.add_graph_from_networkx(G, directed=True)
+cyto.graph.add_graph_from_networkx(F, directed=True)
 
 styles = [
     {
