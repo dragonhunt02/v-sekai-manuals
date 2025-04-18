@@ -25,7 +25,8 @@ except subprocess.CalledProcessError as error:
 import os
 import re
 
-regex_pattern = r'\bextends\s+"(.+?)"'  # Example pattern to match capitalized words.
+results = []
+regex_pattern = r'\bextends\s+"?(.+?)"?\b'  # Example pattern to match capitalized words.
 pattern = re.compile(regex_pattern)
 
 for root, _, files in os.walk(clone_dir):
@@ -40,6 +41,9 @@ for root, _, files in os.walk(clone_dir):
                     print(f"leng{len(matches)}:")
                     for capture in matches:
                       print(capture)
+                      results.append({id: file_path, parent: capture})
+
+print(results)
 
 import networkx as nx
 from ipycytoscape import CytoscapeWidget
