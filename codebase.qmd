@@ -29,7 +29,7 @@ results = []
 regex_extends = r'\b\s*?extends\s+"?(.+?)"?\b'
 pattern_extends = re.compile(regex_extends)
 
-regex_classname = r'\b\s*?class\s+(.+?):' # Won't match nested classes
+regex_classname = r'\b\s*?class\s+(.+?):' # WARNING: nested classes not supported
 pattern_classname = re.compile(regex_classname)
 
 for root, _, files in os.walk(clone_dir):
@@ -52,15 +52,15 @@ for root, _, files in os.walk(clone_dir):
                     match_parent = pattern_extends.search(line)
                     match_classname = pattern_classname.search(line)
                     if match_classname:
-                        print("\nmatched classname")
+                        # print("\nmatched classname")
                         class_counter += 1
                         class_name = match_classname.group(1)
                         continue
                     elif match_parent:
                         parent_name = match_parent.group(1)
                         if class_counter == 0:
-                            print("\nroot class")
-                            class_name = parent_name
+                            # print("\nroot class")
+                            class_name = file_path
                         #else:
                         #    class_name = class_name
                         print(f"\nMatch in {file_path}, line {line_number}: {class_name} count {class_counter}")
