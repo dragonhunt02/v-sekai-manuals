@@ -22,6 +22,24 @@ try:
 except subprocess.CalledProcessError as error:
     print("Error: can't clone repository :", error.stderr)
 
+import os
+import re
+
+regex_pattern = r'\bextends\s+"(.+)"'  # Example pattern to match capitalized words.
+pattern = re.compile(regex_pattern)
+
+for root, _, files in os.walk(clone_dir):
+    for file in files:
+        if file.endswith(".gd"):
+            file_path = os.path.join(root, file)
+            with open(file_path, "r", encoding="utf-8") as f:
+                content = f.read()
+                matches = pattern.findall(content)
+                if matches:
+                    print(f"Matches in {file_path}:")
+                    for capture in matches:
+                      print(capture)
+
 import networkx as nx
 from ipycytoscape import CytoscapeWidget
 
