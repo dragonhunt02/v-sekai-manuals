@@ -26,22 +26,48 @@ import os
 import re
 
 results = []
-regex_pattern = r'\bextends\s+"?(.+?)"?\b'  # Example pattern to match capitalized words.
-pattern = re.compile(regex_pattern)
+regex_extends = r'\bextends\s+"?(.+?)"?\b'
+pattern_extends = re.compile(regex_extends)
+
+regex_classname = r'\bclass\s+(.+?):\b' # Won't match nested classes
+pattern_classname = re.compile(regex_classname)
 
 for root, _, files in os.walk(clone_dir):
     for file in files:
         if file.endswith(".gd"):
             file_path = os.path.join(root, file)
             with open(file_path, "r", encoding="utf-8") as f:
-                content = f.read()
-                matches = pattern.findall(content)
-                if matches:
-                    print(f"Matches in {file_path}:")
-                    print(f"leng{len(matches)}:")
-                    for capture in matches:
-                      print(capture)
-                      results.append({"id": file_path, "parent": capture})
+                line_number = 0
+                class_counter = 0
+                class_name = ""
+                for line in f:
+                    line_number += 1
+                    if line.strip() == "":
+                        continue
+                    indent = len(line) - len(line.lstrip())
+                    if indent == 0: # reset
+                        class_counter = 0
+                        class_name = ""
+
+                    match_parent = pattern_extends.search(line)
+                    match_classname = pattern_classname.search(line)
+                    if match_classname:
+                        class_counter += 1
+                        class_name = match_classname.group(1)
+                        continue
+                    elif match_parent:
+                        parent_name = match_parent.group(1)
+                        if class_counter == 0:
+                            class_name = parent_name
+                        #else:
+                        #    class_name = class_name
+                        print(f"\nMatch in {file_path}, line {line_number}: {capture}")
+                        results.append({
+                            "id": class_name,
+                            "parent": parent_name,
+                            "path": file_path,
+                            "line": line_number,
+                        })
 
 print(results)
 
