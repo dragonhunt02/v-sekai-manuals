@@ -104,7 +104,7 @@ data = results
 F = nx.DiGraph()
 for item in data:
     G.add_node(item["id"], path=item["path"], line=item["line"])
-    G.add_edge(item["parent"], item["id"])
+    G.add_edge(item["parent"], item["id"], relationship="inheritance")
 
 cyto = CytoscapeWidget()
 
