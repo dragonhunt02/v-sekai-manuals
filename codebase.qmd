@@ -1,0 +1,81 @@
+---
+title: "Codebase"
+format: 
+  html:
+    page-layout: full
+---
+
+```{python}
+import networkx as nx
+from ipycytoscape import CytoscapeWidget
+
+G = nx.DiGraph()
+
+# Add nodes representing classes, optionally with attributes
+nodes = [
+    ("Animal", {"label": "Animal"}),
+    ("Mammal", {"label": "Mammal"}),
+    ("Bird", {"label": "Bird"}),
+    ("Dog", {"label": "Dog"}),
+    ("Cat", {"label": "Cat"}),
+    ("Sparrow", {"label": "Sparrow"}),
+    ("Leg", {"label": "Leg"})  # Example for composition
+]
+
+G.add_nodes_from(nodes)
+
+# Add edges for inheritance relationships
+G.add_edge("Animal", "Mammal", relationship="inheritance")
+G.add_edge("Animal", "Bird", relationship="inheritance")
+G.add_edge("Mammal", "Dog", relationship="inheritance")
+G.add_edge("Mammal", "Cat", relationship="inheritance")
+G.add_edge("Bird", "Sparrow", relationship="inheritance")
+
+G.add_edge("Dog", "Leg", relationship="composition")
+
+cyto = CytoscapeWidget()
+
+# Convert NetworkX graph for ipycytoscape.
+cyto.graph.add_graph_from_networkx(G, directed=True)
+
+styles = [
+    {
+        'selector': 'node',
+        'style': {
+            'label': 'data(label)',
+            'background-color': '#BFD7B5',
+            'border-color': 'black',
+            'border-width': 1,
+            'width': 40,
+            'height': 40,
+            'text-valign': 'center',
+            'text-halign': 'center',
+            'font-size': '10px'
+        }
+    },
+    {
+        'selector': 'edge[relationship = "inheritance"]',
+        'style': {
+            'line-color': '#0074D9',
+            'target-arrow-shape': 'triangle',
+            'target-arrow-color': '#0074D9',
+            'curve-style': 'bezier'
+        }
+    },
+    {
+        'selector': 'edge[relationship = "composition"]',
+        'style': {
+            'line-color': '#FF4136',
+            'target-arrow-shape': 'diamond',
+            'target-arrow-color': '#FF4136',
+            'curve-style': 'bezier'
+        }
+    }
+]
+
+cyto.set_style(styles)
+cyto.set_layout(name='dagre')
+
+# Display
+cyto
+```
