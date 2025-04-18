@@ -63,7 +63,7 @@ for root, _, files in os.walk(clone_dir):
                             class_name = file_path
                         #else:
                         #    class_name = class_name
-                        print(f"\nMatch in {file_path}, line {line_number}: {class_name} count {class_counter}")
+                        # print(f"\nMatch in {file_path}, line {line_number}: {class_name} count {class_counter}")
                         results.append({
                             "id": class_name,
                             "parent": parent_name,
@@ -153,7 +153,8 @@ cyto.set_style(styles)
 #    roots=[node for node in F.nodes() if F.in_degree(node) == 0],
 #    spacingFactor=1.2
 #)
-cyto.set_layout(name='concentric', spacingFactor=1.0)
+#cyto.set_layout(name='concentric', spacingFactor=1.0)
+cyto.set_layout(name='cose', animate=True)
 
 # Display
 cyto
