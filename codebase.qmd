@@ -29,7 +29,7 @@ results = []
 regex_extends = r'\b\s*?extends\s+"?(.+?)"?\b'
 pattern_extends = re.compile(regex_extends)
 
-regex_classname = r'\bclass\s+(.+?):\b' # Won't match nested classes
+regex_classname = r'\b\s*?class\s+(.+?):' # Won't match nested classes
 pattern_classname = re.compile(regex_classname)
 
 for root, _, files in os.walk(clone_dir):
@@ -46,6 +46,7 @@ for root, _, files in os.walk(clone_dir):
                         continue
                     indent = len(line) - len(line.lstrip())
                     if indent == 0: # reset
+                        print("\nreset")
                         class_counter = 0
                         class_name = ""
 
