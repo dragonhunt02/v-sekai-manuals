@@ -117,7 +117,7 @@ G.add_edge("Dog", "Leg", relationship="composition")
 data = results
 F = nx.DiGraph()
 for item in data:
-    F.add_node(item["id"], label=item["id"], path=item["path"], line=item["line"])
+    F.add_node(item["id"], label=item["id"], path=item.get("path", ""), line=item.get("line", 0))
     F.add_edge(item["parent"], item["id"], relationship="inheritance")
 
 cyto = CytoscapeWidget()
