@@ -63,6 +63,7 @@ for root, _, files in os.walk(clone_dir):
                             class_name = file_path
                         #else:
                         #    class_name = class_name
+                       
                         # print(f"\nMatch in {file_path}, line {line_number}: {class_name} count {class_counter}")
                         results.append({
                             "id": class_name,
@@ -80,7 +81,8 @@ def ensure_root_parents_exist(entries, default_parent="Root"):
     for parent in missing_parents:
         entries.append({
             "id": parent,
-            "parent": default_parent
+            "parent": default_parent,
+            "type": default_parent
         })
     
     return entries
@@ -117,7 +119,7 @@ G.add_edge("Dog", "Leg", relationship="composition")
 data = results
 F = nx.DiGraph()
 for item in data:
-    F.add_node(item["id"], label=item["id"], path=item.get("path", ""), line=item.get("line", 0))
+    F.add_node(item["id"], label=item["id"], type=item.get("type", ""), path=item.get("path", ""), line=item.get("line", 0))
     F.add_edge(item["parent"], item["id"], relationship="inheritance")
 
 cyto = CytoscapeWidget()
@@ -139,6 +141,23 @@ styles = [
             'height': 40,
             'text-valign': 'center',
             'text-halign': 'center',
+            'font-size': '10px'
+        }
+    },
+    {
+        'selector': 'node[type = "Godot"]',
+        'style': {
+            'label': 'data(label)',
+            'text-overflow': 'ellipsis',
+            'text-max-width': '80px', 
+            'background-color': '#D9544D',
+            'border-color': 'black',
+            'border-width': 5,
+            'width': 40,
+            'height': 40,
+            'text-valign': 'center',
+            'text-halign': 'center',
+            'font-weight': 'bold',
             'font-size': '10px'
         }
     },
