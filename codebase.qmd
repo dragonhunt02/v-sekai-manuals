@@ -84,6 +84,12 @@ def ensure_root_parents_exist(entries, default_parent="Root"):
             "parent": default_parent,
             "type": default_parent
         })
+    entries.append({
+        "id": default_parent,
+        "parent": None,
+        "type": default_parent
+# f"root_{default_parent}"
+    })
     
     return entries
 
@@ -92,35 +98,14 @@ results = ensure_root_parents_exist(results, "Godot")
 import networkx as nx
 from ipycytoscape import CytoscapeWidget
 
-G = nx.DiGraph()
-
-# Add nodes representing classes, optionally with attributes
-nodes = [
-    ("Animal", {"label": "Animal"}),
-    ("Mammal", {"label": "Mammal"}),
-    ("Bird", {"label": "Bird"}),
-    ("Dog", {"label": "Dog"}),
-    ("Cat", {"label": "Cat"}),
-    ("Sparrow", {"label": "Sparrow"}),
-    ("Leg", {"label": "Leg"})  # Example for composition
-]
-
-G.add_nodes_from(nodes)
-
-# Add edges for inheritance relationships
-G.add_edge("Animal", "Mammal", relationship="inheritance")
-G.add_edge("Animal", "Bird", relationship="inheritance")
-G.add_edge("Mammal", "Dog", relationship="inheritance")
-G.add_edge("Mammal", "Cat", relationship="inheritance")
-G.add_edge("Bird", "Sparrow", relationship="inheritance")
-
-G.add_edge("Dog", "Leg", relationship="composition")
+# G.add_edge("Dog", "Leg", relationship="composition")
 
 data = results
 F = nx.DiGraph()
 for item in data:
     F.add_node(item["id"], label=item["id"], type=item.get("type", ""), path=item.get("path", ""), line=item.get("line", 0))
-    F.add_edge(item["parent"], item["id"], relationship="inheritance")
+    if item.get("parent") is not None:
+        F.add_edge(item["parent"], item["id"], relationship="inheritance")
 
 cyto = CytoscapeWidget()
 
@@ -132,12 +117,13 @@ styles = [
         'selector': 'node',
         'style': {
             'label': 'data(label)',
+            'shape': 'roundrectangle',
             'text-overflow': 'ellipsis',
             'text-max-width': '80px', 
             'background-color': '#BFD7B5',
             'border-color': 'black',
             'border-width': 1,
-            'width': 40,
+            'width': 120,
             'height': 40,
             'text-valign': 'center',
             'text-halign': 'center',
@@ -152,7 +138,7 @@ styles = [
             'text-max-width': '80px', 
             'background-color': '#D9544D',
             'border-color': 'black',
-            'border-width': 5,
+            'border-width': 3,
             'width': 40,
             'height': 40,
             'text-valign': 'center',
