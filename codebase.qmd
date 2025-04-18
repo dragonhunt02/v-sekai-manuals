@@ -26,7 +26,7 @@ import os
 import re
 
 results = []
-regex_extends = r'\bextends\s+"?(.+?)"?\b'
+regex_extends = r'\b\s*?extends\s+"?(.+?)"?\b'
 pattern_extends = re.compile(regex_extends)
 
 regex_classname = r'\bclass\s+(.+?):\b' # Won't match nested classes
