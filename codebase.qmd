@@ -197,9 +197,9 @@ cyto.set_style(styles)
 #    avoidOverlap=True 
 #)
 cyto.set_layout(
-    name="cose-bilkent", 
-    animate=False,
-    idealEdgeLength=100,
+    name="fcose", 
+    animate=True,
+    idealEdgeLength=150,
     nodeRepulsion=700,
     gravity=0.2
 )
