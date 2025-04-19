@@ -200,7 +200,7 @@ cyto.set_layout(
     name="cola",         
     animate=True,          
     maxSimulationTime=4000, 
-    nodeSpacing=10,       
+    nodeSpacing=3,       
     edgeLengthVal=100,
     randomize=True
 )
