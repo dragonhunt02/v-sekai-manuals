@@ -197,11 +197,11 @@ cyto.set_style(styles)
 #    avoidOverlap=True 
 #)
 cyto.set_layout(
-    name="fcose", 
-    animate=True,
-    idealEdgeLength=1500,
-    nodeRepulsion=20000,
-    gravity=0.2,
+    name="cola",         
+    animate=True,          
+    maxSimulationTime=4000, 
+    nodeSpacing=10,       
+    edgeLengthVal=100,
     randomize=True
 )
 # Display
