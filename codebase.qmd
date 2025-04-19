@@ -79,6 +79,7 @@ for root, _, files in os.walk(clone_dir):
                             "relation": "inheritance"
                         })
                     elif match_compose:
+                        print(f"match compose {match_compose}")
                         class_name = match_compose.group(2)
                         results.append({
                             "id": class_name,
