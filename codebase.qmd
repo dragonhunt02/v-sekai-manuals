@@ -200,8 +200,8 @@ cyto.set_layout(
     name="cose-bilkent", 
     animate=False,
     idealEdgeLength=100,
-    nodeRepulsion=4500,
-    gravity=0.8
+    nodeRepulsion=700,
+    gravity=0.2
 )
 # Display
 cyto
