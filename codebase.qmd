@@ -200,7 +200,7 @@ cyto.set_layout(
     name="fcose", 
     animate=True,
     idealEdgeLength=150,
-    nodeRepulsion=700,
+    nodeRepulsion=20000,
     gravity=0.2
 )
 # Display
