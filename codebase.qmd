@@ -79,10 +79,10 @@ for root, _, files in os.walk(clone_dir):
                             "relation": "inheritance"
                         })
                     elif match_compose:
-                        parent_name = match_compose.group(2)
+                        class_name = match_compose.group(2)
                         results.append({
                             "id": class_name,
-                            "parent": parent_name,
+                            "parent": stripped_path,
                             "path": stripped_path,
                             "line": line_number,
                             "relation": "composition"
