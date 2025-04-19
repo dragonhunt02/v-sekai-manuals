@@ -25,6 +25,12 @@ except subprocess.CalledProcessError as error:
 import os
 import re
 
+def normalize_path(absolute_path, relative_path=None):
+    normalized_path = re.sub(r'^res://', "", absolute_path)
+    if relative_path:
+        normalized_path = os.path.normpath(os.path.join(normalized_path, relative_path))
+    return normalized_path
+
 results = []
 regex_extends = r'\b\s*?extends\s+"?(.+?)("|\s|$)'
 pattern_extends = re.compile(regex_extends)
@@ -63,7 +69,7 @@ for root, _, files in os.walk(clone_dir):
                         continue
                     elif match_parent:
                         parent_name = match_parent.group(1)
-                        parent_name = re.sub(r'^res://', "", parent_name)
+                        parent_name = normalize_path(parent_name)
                         if class_counter == 0:
                             # print("\nroot class")
                             class_name = stripped_path
@@ -81,7 +87,7 @@ for root, _, files in os.walk(clone_dir):
                     elif match_compose:
                         print(f"match compose {match_compose.group(2)}")
                         class_name = match_compose.group(2)
-                        class_name = re.sub(r'^res://', "", parent_name)
+                        class_name = normalize_path(class_name, stripped_path)
                         results.append({
                             "id": class_name,
                             "parent": stripped_path,
