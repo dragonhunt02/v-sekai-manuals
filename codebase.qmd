@@ -199,9 +199,10 @@ cyto.set_style(styles)
 cyto.set_layout(
     name="fcose", 
     animate=True,
-    idealEdgeLength=150,
+    idealEdgeLength=1500,
     nodeRepulsion=20000,
-    gravity=0.2
+    gravity=0.2,
+    randomize=True
 )
 # Display
 cyto
