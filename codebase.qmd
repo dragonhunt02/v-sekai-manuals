@@ -96,6 +96,16 @@ def ensure_root_parents_exist(entries, default_parent="Root"):
 
 #results = ensure_root_parents_exist(results, "Godot")
 
+def add_godot_parents(entries):
+    id_set = {entry["id"] for entry in entries if entry.get("id")}
+    for entry in entries:
+        if entry.get("parent") and entry["parent"] not in id_set:
+            entry["parent_godot"] = entry["parent"]
+            entry["parent"] = None # Extends Godot node, so don't parent in graph  
+    return entries
+
+results = add_godot_parents(results)
+
 import networkx as nx
 from ipycytoscape import CytoscapeWidget
 
