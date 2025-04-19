@@ -61,7 +61,7 @@ for root, _, files in os.walk(clone_dir):
                         parent_name = match_parent.group(1)
                         if class_counter == 0:
                             # print("\nroot class")
-                            class_name = file_path
+                            class_name = stripped_path
                         #else:
                         #    class_name = class_name
                        
@@ -99,9 +99,11 @@ def ensure_root_parents_exist(entries, default_parent="Root"):
 def add_godot_parents(entries):
     id_set = {entry["id"] for entry in entries if entry.get("id")}
     for entry in entries:
-        if entry.get("parent") and entry["parent"] not in id_set:
-            entry["parent_godot"] = entry["parent"]
-            entry["parent"] = None # Extends Godot node, so don't parent in graph  
+        if entry.get("parent"):
+            parent = re.sub(r'^res://', "", entry["parent"])
+            if parent not in id_set:
+              entry["parent_godot"] = entry["parent"]
+              entry["parent"] = None # Extends Godot node, so don't parent in graph  
     return entries
 
 results = add_godot_parents(results)
