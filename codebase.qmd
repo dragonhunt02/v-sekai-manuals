@@ -129,7 +129,7 @@ for item in data:
             F.add_node(parent_group, label=parent_group)
             node_groups.append(parent_group)
 
-    F.add_node(item["id"], label=item["id"], type=item.get("type", ""), path=path, line=item.get("line", 0), parent=parent_group)
+    F.add_node(item["id"], label=item["id"], type=item.get("type", ""), path=path, line=item.get("line", 0)) #, parent=parent_group)
     if item.get("parent") is not None:
         F.add_edge(item["parent"], item["id"], relationship="inheritance")
 
