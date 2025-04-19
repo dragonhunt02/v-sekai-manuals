@@ -94,7 +94,7 @@ def ensure_root_parents_exist(entries, default_parent="Root"):
     
     return entries
 
-results = ensure_root_parents_exist(results, "Godot")
+#results = ensure_root_parents_exist(results, "Godot")
 
 import networkx as nx
 from ipycytoscape import CytoscapeWidget
