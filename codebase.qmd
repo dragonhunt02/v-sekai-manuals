@@ -32,7 +32,7 @@ pattern_extends = re.compile(regex_extends)
 regex_classname = r'\b\s*?class\s+(.+?):' # WARNING: nested classes not supported
 pattern_classname = re.compile(regex_classname)
 
-regex_compose = r'\b\s+?(pre)?load\("(.+?)"\)'
+regex_compose = r'=\s+?(pre)?load\("(.+?)"\)'
 pattern_compose = re.compile(regex_compose)
 
 for root, _, files in os.walk(clone_dir):
