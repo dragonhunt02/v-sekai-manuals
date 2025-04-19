@@ -201,7 +201,7 @@ cyto.set_layout(
     animate=False,
     idealEdgeLength=100,
     nodeRepulsion=4500,
-    gravity=1.5
+    gravity=0.8
 )
 # Display
 cyto
