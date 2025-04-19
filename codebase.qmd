@@ -59,6 +59,7 @@ for root, _, files in os.walk(clone_dir):
                         continue
                     elif match_parent:
                         parent_name = match_parent.group(1)
+                        parent_name = re.sub(r'^res://', "", parent_name)
                         if class_counter == 0:
                             # print("\nroot class")
                             class_name = stripped_path
