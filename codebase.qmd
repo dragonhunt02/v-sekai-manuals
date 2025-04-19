@@ -32,6 +32,9 @@ pattern_extends = re.compile(regex_extends)
 regex_classname = r'\b\s*?class\s+(.+?):' # WARNING: nested classes not supported
 pattern_classname = re.compile(regex_classname)
 
+regex_compose = r'\b\s+?(pre)?load\("(.+?)"\)'
+pattern_compose = re.compile(regex_compose)
+
 for root, _, files in os.walk(clone_dir):
     for file in files:
         if file.endswith(".gd"):
@@ -52,6 +55,7 @@ for root, _, files in os.walk(clone_dir):
 
                     match_parent = pattern_extends.search(line)
                     match_classname = pattern_classname.search(line)
+                    match_compose = pattern_compose.search(line)
                     if match_classname:
                         # print("\nmatched classname")
                         class_counter += 1
@@ -72,6 +76,16 @@ for root, _, files in os.walk(clone_dir):
                             "parent": parent_name,
                             "path": stripped_path,
                             "line": line_number,
+                            "relation": "inheritance"
+                        })
+                    elif match_compose:
+                        parent_name = match_compose.group(2)
+                        results.append({
+                            "id": class_name,
+                            "parent": parent_name,
+                            "path": stripped_path,
+                            "line": line_number,
+                            "relation": "composition"
                         })
 
 #print(results)
@@ -131,7 +145,7 @@ for item in data:
 
     F.add_node(item["id"], label=item["id"], type=item.get("type", ""), path=path, line=item.get("line", 0)) #, parent=parent_group)
     if item.get("parent") is not None:
-        F.add_edge(item["parent"], item["id"], relationship="inheritance")
+        F.add_edge(item["parent"], item["id"], relationship=item["relation"]) #"inheritance")
 
 cyto = CytoscapeWidget()
 
