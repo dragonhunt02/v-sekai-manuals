@@ -36,6 +36,7 @@ for root, _, files in os.walk(clone_dir):
     for file in files:
         if file.endswith(".gd"):
             file_path = os.path.join(root, file)
+            stripped_path = os.path.join(os.path.relpath(root, clone_dir), file)
             with open(file_path, "r", encoding="utf-8") as f:
                 line_number = 0
                 class_counter = 0
@@ -68,7 +69,7 @@ for root, _, files in os.walk(clone_dir):
                         results.append({
                             "id": class_name,
                             "parent": parent_name,
-                            "path": file_path,
+                            "path": stripped_path,
                             "line": line_number,
                         })
 
@@ -102,8 +103,19 @@ from ipycytoscape import CytoscapeWidget
 
 data = results
 F = nx.DiGraph()
+node_groups=[]
 for item in data:
-    F.add_node(item["id"], label=item["id"], type=item.get("type", ""), path=item.get("path", ""), line=item.get("line", 0))
+    path = item.get("path", "")
+
+    parent_group = None
+    if path and path.startswith("addons/"): 
+        parent_group = path.split("addons/", 1)[1].split("/")[0]
+        print(f"Parent group created: {parent_group}")
+        if parent_group not in node_groups:
+            F.add_node(parent_group, label=parent_group)
+            node_groups.append(parent_group)
+
+    F.add_node(item["id"], label=item["id"], type=item.get("type", ""), path=path, line=item.get("line", 0), parent=parent_group)
     if item.get("parent") is not None:
         F.add_edge(item["parent"], item["id"], relationship="inheritance")
 
