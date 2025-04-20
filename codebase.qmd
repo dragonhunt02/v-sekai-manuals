@@ -32,7 +32,7 @@ def normalize_path(absolute_path, relative_path=None):
         if relative_path != strip_relative:
             normalized_path = strip_relative
         else:
-        normalized_path = os.path.normpath(os.path.join(strip_absolute, strip_relative))
+            normalized_path = os.path.normpath(os.path.join(strip_absolute, strip_relative))
     else:
         normalized_path = strip_absolute
     return normalized_path
