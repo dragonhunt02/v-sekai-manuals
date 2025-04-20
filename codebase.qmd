@@ -249,22 +249,12 @@ cyto.set_layout(
     randomize=True
 )
 """
-layout_options = {
-    'name': 'elk',
-    'elk': {
-        'algorithm': 'layered',
-        'elk.direction': 'DOWN',
-    },
-    'fit': True,
-    'padding': 20,
-    'animate': False
-}
-
-# Set and run the layout.
 cyto.set_layout(
-    name="elk",
-    animate=True,
-    maxSimulationTime=4000
+    name="cose",         
+    animate=True,          
+    maxSimulationTime=4000,
+    edgeLengthVal=100,
+    randomize=True
 )
 # Display
 cyto
