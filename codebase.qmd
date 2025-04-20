@@ -26,9 +26,12 @@ import os
 import re
 
 def normalize_path(absolute_path, relative_path=None):
-    normalized_path = re.sub(r'^res://', "", absolute_path)
+    strip_absolute = re.sub(r'^res://', "", absolute_path)
     if relative_path:
-        normalized_path = os.path.normpath(os.path.join(normalized_path, relative_path))
+        strip_relative = re.sub(r'^res://', "", relative_path)
+        normalized_path = os.path.normpath(os.path.join(strip_absolute, strip_relative))
+    else:
+        normalized_path = strip_absolute
     return normalized_path
 
 results = []
