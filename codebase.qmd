@@ -239,20 +239,11 @@ cyto.set_style(styles)
 #    nodeRepulsion=4000,
 #    avoidOverlap=True 
 #
-test = """
 cyto.set_layout(
     name="cola",         
     animate=True,          
     maxSimulationTime=4000, 
     nodeSpacing=3,       
-    edgeLengthVal=100,
-    randomize=True
-)
-"""
-cyto.set_layout(
-    name="cose",         
-    animate=True,          
-    maxSimulationTime=4000,
     edgeLengthVal=100,
     randomize=True
 )
