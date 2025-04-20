@@ -46,6 +46,7 @@ for root, _, files in os.walk(clone_dir):
         if file.endswith(".gd"):
             file_path = os.path.join(root, file)
             stripped_path = os.path.join(os.path.relpath(root, clone_dir), file)
+            stripped_dir = os.path.dirname(stripped_path)
             with open(file_path, "r", encoding="utf-8") as f:
                 line_number = 0
                 class_counter = 0
@@ -87,7 +88,7 @@ for root, _, files in os.walk(clone_dir):
                     elif match_compose:
                         print(f"match compose {match_compose.group(2)}")
                         class_name = match_compose.group(2)
-                        class_name = normalize_path(class_name, stripped_path)
+                        class_name = normalize_path(os.path.dirname(stripped_path), class_name)
                         results.append({
                             "id": class_name,
                             "parent": stripped_path,
