@@ -91,7 +91,7 @@ for root, _, files in os.walk(clone_dir):
                             "line": line_number,
                             "relation": "inheritance"
                         })
-                    elif match_compose:
+                    elif match_compose and False: # Disabled
                         print(f"match compose {match_compose.group(2)}")
                         class_name = match_compose.group(2)
                         class_name = normalize_path(os.path.dirname(stripped_path), class_name)
@@ -241,9 +241,9 @@ cyto.set_style(styles)
 #)
 cyto.set_layout(
     name="cola",         
-    animate=True,          
+    animate=False,          
     maxSimulationTime=4000, 
-    nodeSpacing=3,       
+    nodeSpacing=4,       
     edgeLengthVal=100,
     randomize=True
 )
