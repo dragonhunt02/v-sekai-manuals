@@ -261,7 +261,11 @@ layout_options = {
 }
 
 # Set and run the layout.
-cyto.set_layout(layout_options)
+cyto.set_layout(
+    name="elk",
+    animate=True,
+    maxSimulationTime=4000
+)
 # Display
 cyto
 ```
