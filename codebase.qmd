@@ -91,7 +91,7 @@ for root, _, files in os.walk(clone_dir):
                             "line": line_number,
                             "relation": "inheritance"
                         })
-                    elif match_compose: # Enabled
+                    elif False and match_compose: # Disabled
                         print(f"match compose {match_compose.group(2)}")
                         class_name = match_compose.group(2)
                         class_name = normalize_path(os.path.dirname(stripped_path), class_name)
