@@ -11,7 +11,8 @@ format:
 #| output: asis
 import subprocess
 
-repo_url = "https://github.com/V-Sekai/v-sekai-game.git"
+#repo_url = "https://github.com/V-Sekai/v-sekai-game.git"
+repo_url = "https://github.com/dragonhunt02/v-sekai-game.git"
 clone_dir = "v-sekai-game"  # or omit this argument to clone into a folder named after the repository
 try:
     result = subprocess.run(
